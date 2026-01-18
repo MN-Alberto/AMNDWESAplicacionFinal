@@ -306,12 +306,6 @@
         #mainPublico{
             width: 1800px !important;
         }
-
-        .imagenesInicio{
-            display: flex;
-            flex-direction: row;
-        }
-
     </style>
 </head>
 <body>
@@ -330,6 +324,7 @@
         <p><a href="../AMNDWESAplicacionFinal/indexAplicacionFinal.php">Alberto Mendez Nuñez</a></p>
         <a href="https://github.com/MN-Alberto/AMNDWESProyectoLoginLogoff" target="_blank"><img src="webroot/img.png" height="40px"/></a>
         <a href="https://www.minecraft.net/es-es" target="_blank"><img src="webroot/cubo.png" height="40px"/></a>
+        <a href="webroot/alberto_mendez_cv.pdf" target="_blank"><img src="webroot/curriculum.PNG" height="40px"/></a>
     </footer>
 </body>
 </html>

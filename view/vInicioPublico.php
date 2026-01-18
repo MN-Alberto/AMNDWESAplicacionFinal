@@ -27,6 +27,5 @@
         <h1><b>Inicio Publico</b></h1>
         <div class="imagenesInicio">
             <img id="arbol" src="./webroot/arbol.PNG">
-            <img id="diagrama" src="./webroot/diagramaClases.PNG">
         </div>
     </main>
