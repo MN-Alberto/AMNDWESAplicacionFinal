@@ -6,16 +6,16 @@
 </header>
 
 <main id="mainRest">   
-<h1><b>APIs REST</b></h1>
+<h1><b>API REST</b></h1>
 
     <table id="tablaRest">
 
         <tr>
             <td>
                 <h3>NASA</h3>
-                <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="f1">
+                <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="fFecha">
                         <label for="fecha">Foto del día: </label>
-                        <input type="date" name="fecha" id="fecha"/>
+                        <input type="date" name="fecha" id="fecha" value="<?php echo $fecha; ?>" max="<?php echo date('Y-m-d') ?>"/>
                         <input type="submit" name="enviar" id="enviar" value="Enviar"/>
                 </form>
             </td>
@@ -45,19 +45,7 @@
         <tr>
             <td>
                 <p>
-                <pre class="codigo"><code>
-                    <h2>Clase NASA</h2>
-                    <?php echo htmlspecialchars($codigoNASA); 
-                    ?>
-                    <h2>Clase Rest</h2>
-                    <?php
-                          echo htmlspecialchars($codigoRest);
-                    ?>
-                    <h2>Controlador Rest</h2>
-                    <?php
-                          echo htmlspecialchars($codigocRest);
-                    ?>
-                </code></pre>
+                
                 </p>
             </td>
             <td></td>

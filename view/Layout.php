@@ -9,8 +9,7 @@
             background: #171615;
             margin: 0;
             padding: 0;
-            background: url(webroot/fondo.webp);
-            background-repeat: no-repeat;
+            background-color: #3d3938;
         }
         
         header {
@@ -22,6 +21,11 @@
             flex-direction: row;
             align-items: center;
             height: 100px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            border-bottom: 1px solid green;
         }
         
         #h1Publico{
@@ -46,11 +50,9 @@
             width: 1000px;
             margin: 30px auto;
             padding: 20px;
-            background: #3d3938;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             height: 620px;
             color: white;
+            margin-top: 150px;
         }
         
         .mDetalle{
@@ -80,7 +82,7 @@
         }
         footer{
             margin: auto;
-            background-color: #313131;
+            background-color: #242222;
             text-align: center;
             height: 100px;
 	    color: white;
@@ -88,6 +90,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
+            border-top: 1px solid green;
         }
 	main{
 	text-align:center;
@@ -137,6 +140,19 @@
             height: 40px;
             cursor: pointer;
             /* font-family: "texto"; */
+            border-radius: 10px;
+        }
+        
+        #usuario{
+            background: lightyellow;
+        }
+        
+        #pass{
+            background: lightyellow;
+        }
+        
+        #desc{
+            background: lightyellow;
         }
         
         label{
@@ -230,7 +246,7 @@
 
         #Login{
             position: absolute;
-            right: 50px;
+            right: 160px;
             background-image: url(./webroot/login.png);
             background-size: cover;
             border: none;
@@ -278,33 +294,120 @@
 
         #mainRest{
             width: 1800px !important;
-            height: 2500px !important;
-            
+            height: auto !important;
+            margin-bottom: 100px;
         }
 
         #tablaRest{
-            border: 4px solid green;
+            border: 2px solid white;
+            border-radius: 10px;
             margin-top: 50px;
-            width: 100%;
+            width: 80%;
             padding: 0;
             & td{
-                border: 4px solid green;
-                width: 600px;
+                border: 2px solid white;
+                width: 300px;
+                border-radius: 10px;
             }
         }
 
         #imagenNasa{
-            width: 550px;
-            height: 300px;
+            width: 350px;
+            height: 350px;
+            transition: all 0.5s ease;
+            border-radius: 10px;
         }
-
-        .codigo{
-            text-align: left;
-            color:green;
+        
+        #imagenNasa:hover{
+            scale: 1.4;
+            border-radius: 0px;
         }
 
         #mainPublico{
-            width: 1800px !important;
+            width: 1200px !important;
+            height: 640px !important;
+        }
+        
+        #fecha{
+            background: lightcyan !important;
+            width: 100px;
+        }
+        
+        #fFecha{
+            margin-bottom: 30px;
+        }
+        
+        #enviar{
+            width: 80px;
+        }
+        
+        
+        .container{
+            position: relative;
+            width: 880px;
+            height: 400px;
+            margin: 0 auto;
+            background-color: blanchedalmond;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 100px;
+        }
+        
+        .carrusel{
+            position: relative;
+            width: 900px;
+            height: 560px;
+            overflow: hidden;
+        }
+
+        .carrusel .fotos{
+            display: flex;
+        }
+
+        .fotos{
+            transition: all 0.5s ease;
+        }
+
+        .bRadio{
+            position: absolute;
+            left: 50px;
+            bottom: 25px;
+            z-index: 100;
+        }
+
+        #r1{
+            left: 35px;
+        }
+        #r2{
+            left: 120px;
+        }
+
+        .bRadio::after{
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            left: -17px;
+            top: -10px;
+            border-radius: 50%;
+        }
+
+        #r1:focus-within ~ .fotos {transform: translateX(0px);}
+        #r2:focus-within ~ .fotos {transform: translateX(-400px);}
+        
+        #salir{
+            position: absolute;
+            right: 80px;
+            background-image: url(./webroot/volver.png);
+            background-size: cover;
+            border: none;
+            background-repeat: no-repeat;
+            width: 55px;
+            height: 55px;
+            background-color: transparent;
+            cursor: pointer;
+            top: 40px;  
         }
     </style>
 </head>
@@ -322,9 +425,9 @@
     
     <footer>
         <p><a href="../AMNDWESAplicacionFinal/indexAplicacionFinal.php">Alberto Mendez Nuñez</a></p>
-        <a href="https://github.com/MN-Alberto/AMNDWESProyectoLoginLogoff" target="_blank"><img src="webroot/img.png" height="40px"/></a>
+        <a href="https://github.com/MN-Alberto/AMNDWESAplicacionFinal" target="_blank"><img src="webroot/img.png" height="40px"/></a>
         <a href="https://www.minecraft.net/es-es" target="_blank"><img src="webroot/cubo.png" height="40px"/></a>
-        <a href="webroot/alberto_mendez_cv.pdf" target="_blank"><img src="webroot/curriculum.PNG" height="40px"/></a>
+        <a href="webroot/alberto_mendez_cv.pdf" target="_blank"><img src="webroot/curriculum.png" height="40px"/></a>
     </footer>
 </body>
 </html>
