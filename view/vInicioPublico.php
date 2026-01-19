@@ -20,12 +20,25 @@
 
         <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="loginPublico">
             <button type="submit" name="Login" id="Login"></button>
+            <button type="submit" name="salir" id="salir"></button>
         </form> 
         </header>
 
     <main id="mainPublico">
         <h1><b>Inicio Publico</b></h1>
-        <div class="imagenesInicio">
+        <!--<div class="imagenesInicio">
             <img id="arbol" src="./webroot/arbol.PNG">
+        </div>-->
+        
+    <div class="container">
+        <div class="carrusel">
+            <input type="radio" name="r" id="r1" class="bRadio"/>
+            <input type="radio" name="r" id="r2" class="bRadio"/>
+
+            <div class="fotos">
+                <img src="./webroot/arbol.PNG" alt="foto1"/>
+                <img src="./webroot/diagramaClases.PNG" alt="foto2"/>
+            </div>
         </div>
+    </div>
     </main>

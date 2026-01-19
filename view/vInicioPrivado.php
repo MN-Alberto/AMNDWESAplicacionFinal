@@ -7,7 +7,7 @@
 
     
 <header>
-<h1><b>Proyecto Login Logoff</b></h1>
+<h1><b>Aplicacion Final</b></h1>
 
         <form action=<?php echo $_SERVER["PHP_SELF"];?> method="post" id="cerrarSesion">
             <button type="submit" name="cerrar" id="cerrar"></button>
@@ -57,6 +57,6 @@
             <input type="submit" id="Aceptar" name="Aceptar" value="Detalle"/>
             <input type="submit" id="Error" name="Error" value="Error"/>
             <input type="submit" id="mantenimiento" name="mantenimiento" value="Mantenimiento Dept"/>
-            <input type="submit" id="rest" name="rest" value="Rest"/>
+            <input type="submit" id="rest" name="rest" value="REST"/>
       </form> 
 </main>
