@@ -47,18 +47,33 @@
         }
         
         public static function registrarUsuario(string $codUsuario, string $descUsuario, string $password){
-            $query="INSERT INTO T01_Usuario 
-                VALUES(:usuario, SHA2(:password, 256), :descripcion);";
             
-            $parametros=[
-              ":usuario" => $codUsuario ?? "",
-              ":password" => $password ?? "",
-              ":descUsuario" => $descUsuario ?? ""
-            ];
+            $oUsuario = null;
+        
+            $query=<<<SQL
+            INSERT INTO T01_Usuario (T01_CodUsuario, T01_DescUsuario,
+             T01_FechaHoraUltimaConexion, T01_ImagenUsuario,  T01_NumConexiones, T01_Password, T01_Perfil) 
+            VALUES 
+            (:codUsuario, :descUsuario, now(), null, 0, SHA2(:password, 256), 'usuario')
+            SQL;
             
-            $insert=DBPDO::ejecutaConsulta($query, $parametros);
-            
-            return ($insercion && $insercion->rowCount() > 0)?true : false;
+            try {
+            $consulta = DBPDO::ejecutaConsulta($query, [
+                ':codUsuario' => $codUsuario,
+                ':descUsuario' => $descUsuario,
+                ':password' => $password
+            ]);
+
+            if ($consulta) {
+                $oUsuario = self::validarUsuario($codUsuario, $password);
+            }
+        } catch (Exception $e) {
+           echo $e->getMessage();
+           exit;
+        }
+
+        return $oUsuario;
+
         }
     }
 ?>

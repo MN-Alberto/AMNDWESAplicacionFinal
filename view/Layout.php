@@ -85,7 +85,7 @@
             background-color: #242222;
             text-align: center;
             height: 100px;
-	    color: white;
+	        color: white;
             position: fixed;
             bottom: 0;
             left: 0;
