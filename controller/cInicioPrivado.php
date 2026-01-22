@@ -36,7 +36,7 @@
     
     if(isset($_REQUEST['mantenimiento'])){
         $_SESSION["paginaAnterior"]=$_SESSION["paginaEnCurso"];
-        $_SESSION["paginaEnCurso"]="mantenimiento";
+        $_SESSION["paginaEnCurso"]="mantenimientoDepartamento";
         header("Location: indexAplicacionFinal.php");
         exit;
     } 

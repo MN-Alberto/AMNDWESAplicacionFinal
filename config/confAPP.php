@@ -23,7 +23,8 @@
         "error" => "controller/cError.php",
         "rest" => "controller/cRest.php",
         "editar" => "controller/cEditar.php",
-        "detalleFoto" => "controller/cDetalleFoto.php"
+        "detalleFoto" => "controller/cDetalleFoto.php",
+        "mantenimientoDepartamento" => "controller/cMantenimientoDepartamento.php"
     ];
     
     //Array asociativo para las distintas páginas de la vista con sus respectivas rutas.
@@ -38,6 +39,7 @@
         "error" => "view/vError.php",
         "rest" => "view/vRest.php",
         "editar" => "view/vEditar.php",
-        "detalleFoto" => "view/vDetalleFoto.php"
+        "detalleFoto" => "view/vDetalleFoto.php",
+        "mantenimientoDepartamento" => "view/vMantenimientoDepartamento.php"
     ];
 ?>

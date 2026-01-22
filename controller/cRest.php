@@ -4,7 +4,8 @@
     require_once './model/NASA.php';
 
     if(isset($_REQUEST["Volver"])){
-        $_SESSION["paginaEnCurso"]=$_SESSION["paginaAnterior"];
+        $_SESSION["paginaAnterior"]=$_SESSION["paginaEnCurso"];
+        $_SESSION["paginaEnCurso"]='inicioPrivado';
         header("Location: indexAplicacionFinal.php");
         exit;
     }
@@ -58,7 +59,6 @@ else{ //por defecto si no se envia ninguna fecha, la fecha se asigna a la de hoy
 }
 
 if(isset($_REQUEST['detalleFoto'])){
-        $_SESSION["paginaAnterior"]=$_SESSION["paginaEnCurso"];
         $_SESSION["paginaEnCurso"]='detalleFoto';
         header("Location: indexAplicacionFinal.php");
         exit;
