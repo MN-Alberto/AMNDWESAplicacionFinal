@@ -47,7 +47,6 @@
         if($oUsuario===null){
             $entradaOK=false;
             
-            $_SESSION['errorRegistro']="Ha ocurrido un error al crear el usuario, compruebe los datos y inténtelo de nuevo.";
             $_SESSION['paginaEnCurso']='login';
             header('Location: indexAplicacionFinal.php');
             exit;

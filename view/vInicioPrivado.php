@@ -10,6 +10,7 @@
 <h1><b>Aplicacion Final</b></h1>
 
         <form action=<?php echo $_SERVER["PHP_SELF"];?> method="post" id="cerrarSesion">
+            <button type="submit" name="editar" id="editarUsuario"></button>
             <button type="submit" name="cerrar" id="cerrar"></button>
         </form>
 
@@ -54,9 +55,9 @@
         ?>
         
         <form action=<?php echo $_SERVER["PHP_SELF"];?> method="post" id="f1">
-            <input type="submit" id="Aceptar" name="Aceptar" value="Detalle"/>
-            <input type="submit" id="Error" name="Error" value="Error"/>
-            <input type="submit" id="mantenimiento" name="mantenimiento" value="Mantenimiento Dept"/>
-            <input type="submit" id="rest" name="rest" value="REST"/>
+            <input type="submit" id="Aceptar" name="Aceptar" class="botones" value="Detalle"/>
+            <input type="submit" id="Error" name="Error" class="botones" value="Error"/>
+            <input type="submit" id="mantenimiento" name="mantenimiento" class="botones" value="Mantenimiento Dept"/>
+            <input type="submit" id="rest" name="rest" class="botones" value="REST"/>
       </form> 
 </main>
