@@ -523,6 +523,25 @@
             width: 650px;
             height: 650px;
         }
+
+        #mantenimientoDept{
+            width: 1200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #mantenimientoDept h1{
+            position: relative;
+            top: -30px;
+        }
+
+        .tablaDept{
+            border: 1px solid black;
+            width: 1000px;
+            height: 600px;
+        }
         
     </style>
 </head>
