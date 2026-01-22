@@ -21,7 +21,9 @@
         "mantenimiento" => "controller/cMantenimiento.php",
         "registrarse" => "controller/cRegistrarse.php",
         "error" => "controller/cError.php",
-        "rest" => "controller/cRest.php"
+        "rest" => "controller/cRest.php",
+        "editar" => "controller/cEditar.php",
+        "detalleFoto" => "controller/cDetalleFoto.php"
     ];
     
     //Array asociativo para las distintas páginas de la vista con sus respectivas rutas.
@@ -34,6 +36,8 @@
         "mantenimiento" => "view/vMantenimiento.php",
         "registrarse" => "view/vRegistrarse.php",
         "error" => "view/vError.php",
-        "rest" => "view/vRest.php"
+        "rest" => "view/vRest.php",
+        "editar" => "view/vEditar.php",
+        "detalleFoto" => "view/vDetalleFoto.php"
     ];
 ?>

@@ -32,9 +32,9 @@
             </table>
             <br>
             <div>
-            <input type="submit" id="Entrar" name="Entrar" value="Entrar"/>
-            <input type="submit" id="Cancelar" name="Cancelar" value="Cancelar"/>
-            <input type="submit" id="Registrarse" name="Registrarse" value="Registrarse"/>
+            <input type="submit" id="Entrar" name="Entrar" class="botones" value="Entrar"/>
+            <input type="submit" id="Cancelar" name="Cancelar" class="botones" value="Cancelar"/>
+            <input type="submit" id="Registrarse" name="Registrarse" class="botones" value="Registrarse"/>
             </div>
         </form>
     </main>

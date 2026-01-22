@@ -13,6 +13,13 @@
         header("Location: indexAplicacionFinal.php");
         exit;
     }
+    
+    if(isset($_REQUEST['editar'])){
+        $_SESSION["paginaAnterior"]=$_SESSION["paginaEnCurso"];
+        $_SESSION["paginaEnCurso"]="editar";
+        header("Location: indexAplicacionFinal.php");
+        exit;
+    }
 
     if(isset($_REQUEST['Aceptar'])){
         $_SESSION["paginaAnterior"]=$_SESSION["paginaEnCurso"];

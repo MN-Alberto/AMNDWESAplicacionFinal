@@ -16,7 +16,7 @@
                 <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="fFecha">
                         <label for="fecha">Foto del día: </label>
                         <input type="date" name="fecha" id="fecha" value="<?php echo $fecha; ?>" max="<?php echo date('Y-m-d') ?>"/>
-                        <input type="submit" name="enviar" id="enviar" value="Enviar"/>
+                        <input type="submit" name="enviar" id="enviar" class="botones" value="Enviar"/>
                 </form>
             </td>
             <td><h3>AEMET</h3></td>
@@ -27,17 +27,26 @@
                 <?php 
                     if ($oNasa){
                 ?>
-                    <h2><?php echo $oNasa->getTitulo(); ?></h2>
-                    <img id="imagenNasa" src="<?php echo $oNasa->getFoto(); ?>" alt="<?php echo $oNasa->getTitulo(); ?>">
-                    <p>Estas viendo la foto del día <?php echo $fecha?></p>
+                    <h2><?php echo $aVista['titulo']; ?></h2>
+                    <img id="imagenNasa" src="<?php echo $aVista['foto']; ?>" alt="<?php echo $aVista['titulo']; ?>">
+                    <h2>Descripción:</h2>
+                    <p><?php echo $aVista['descripcion'];?></p>
                 <?php  
                     }
-                    else{
+                    elseif($oNasa===null){
                 ?>
-                    <p>No se pudo obtener la foto del día.</p>
+                    <p>El día seleccionado no tiene una foto.</p>
                 <?php 
                     }
+                    else{ 
+                    ?>
+                    <p>No se pudo obtener la foto del día.</p>
+                <?php
+                    }
                 ?>
+                <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="formDetalleFoto">
+                    <input type="submit" name="detalleFoto" id="detalleFoto" value="Ver Foto"/>
+                </form>
             </td>
             <td></td>
             <td></td>

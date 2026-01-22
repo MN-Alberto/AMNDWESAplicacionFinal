@@ -212,6 +212,8 @@
             width: 35px;
             height: 25px;
             cursor: pointer;
+            margin-right: 10px;
+            transition: all 0.5s ease;
         }
 
         #ingles{
@@ -222,6 +224,8 @@
             width: 35px;
             height: 25px;
             cursor: pointer;
+            margin-right: 10px;
+            transition: all 0.5s ease;
         }
 
         #portugues{
@@ -232,6 +236,8 @@
             width: 35px;
             height: 25px;
             cursor: pointer;
+            margin-right: 10px;
+            transition: all 0.5s ease;
         }
 
         #ruso{
@@ -242,6 +248,7 @@
             width: 35px;
             height: 25px;
             cursor: pointer;
+            transition: all 0.5s ease;
         }
 
         #Login{
@@ -256,11 +263,13 @@
             background-color: transparent;
             cursor: pointer;
             top: 40px;
+            transition: all 0.5s ease;
         }
 
         #cerrarSesion{
             position: absolute;
             right: 50px;
+            transition: all 0.5s ease;
         }
 
         #cerrar{
@@ -273,11 +282,21 @@
             background-color: transparent;
             cursor: pointer;
             top: 40px;
+            transition: all 0.5s ease;
         }
 
         #volverForm{
             position: absolute;
             right: 70px;
+            transition: all 0.5s ease;
+        }
+        
+        .botones{
+            transition: all 0.4s ease;
+        }
+        
+        .botones:hover{
+            background-color: lightgreen;
         }
 
         #volver{
@@ -290,6 +309,22 @@
             background-color: transparent;
             cursor: pointer;
             top: 40px;
+            transition: all 0.5s ease;
+        }
+        
+        #volverUsuario{  
+            background-image: url(./webroot/volver.png);
+            background-size: cover;
+            border: none;
+            background-repeat: no-repeat;
+            width: 60px;
+            height: 60px;
+            background-color: transparent;
+            cursor: pointer;
+            position: absolute;
+            transition: all 0.5s ease;
+            top: -30px;
+            right: 40px;
         }
 
         #mainRest{
@@ -339,6 +374,7 @@
         
         #enviar{
             width: 80px;
+            transition: all 0.5s ease;
         }
         
         
@@ -407,8 +443,87 @@
             height: 55px;
             background-color: transparent;
             cursor: pointer;
-            top: 40px;  
+            top: 40px; 
+            transition: all 0.5s ease;
         }
+        
+        button:hover{
+            scale: 1.30;
+        }
+        
+        #editarUsuario{
+            position: absolute;
+            right: 120px;
+            background-image: url(./webroot/login.png);
+            background-size: cover;
+            border: none;
+            background-repeat: no-repeat;
+            width: 55px;
+            height: 55px;
+            background-color: transparent;
+            cursor: pointer;
+            top: 25px;
+            transition: all 0.5s ease; 
+        }
+        
+        .contenidoEditar{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .formularioEditar{
+            width: 800px;
+            height: 500px;
+            background: white;
+            margin-top: 35px;
+            border-radius: 10px;
+        }
+        
+        #foto img{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        #foto{
+            position: absolute;
+            top: 300px;
+            left: 600px;
+        }
+        
+        #tablaDatos{
+            position: relative;
+            border: 1px solid black;
+            width: 500px;
+            top: 20px;
+            left: 130px;
+            color: black;
+            text-align: left !important;
+            align-items: left !important;
+            border-radius: 10px;
+        }
+        
+        #tablaDatos tr{
+            height: 40px;
+        }
+        
+        #formDatos input{
+            width: 240px;
+            background-color: #D1F5C1;
+        }
+        
+        #cambiarDesc{
+            background-color: lightgreen !important;
+        }
+        
+        #nasaHD{
+            width: 650px;
+            height: 650px;
+        }
+        
     </style>
 </head>
 <body>
