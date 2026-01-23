@@ -543,6 +543,10 @@
             height: 600px;
         }
         
+        #buscarDesc{
+            width: 300px !important;
+        }
+        
     </style>
 </head>
 <body>
