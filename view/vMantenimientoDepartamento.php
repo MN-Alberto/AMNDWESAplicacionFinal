@@ -14,6 +14,10 @@
             
         <span style="color:red"></span>
         </form>
+<!-- Si el array de departamentos contiene algo se muestra la tabla -->
+        <?php
+            if(!empty($aVista['aDepartamentos'])){
+        ?>
 
         <div class="tablaDept">
                 <table border="1">
@@ -24,7 +28,7 @@
                     <th>Volumen</th>
                     <th>Fecha baja</th>
                 </tr>
-                
+<!-- Recorremos todos los departamentos que haya devuelto la consulta y mostramos los datos de cada uno -->
                 <?php foreach ($aVista['aDepartamentos'] as $dep): ?>
                     <tr>
                         <td><?= $dep['codDepartamento'] ?></td>
@@ -33,7 +37,16 @@
                         <td><?= $dep['volumenNegocio'] ?></td>
                         <td><?= $dep['fechaBaja'] ?></td>
                     </tr>
-                <?php endforeach; ?>
+                <?php 
+                    endforeach; 
+                    }
+                    //Si no contiene departamentos, se muestra un mensaje
+                    else{
+                ?>
+                    <h2>No se han encontrado departamentos con esa descripción</h2>
+                <?php
+                    }
+                ?>
             </table>
         </div>
     </main>

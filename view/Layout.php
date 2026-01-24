@@ -538,9 +538,17 @@
         }
 
         .tablaDept{
-            border: 1px solid black;
             width: 1000px;
             height: 600px;
+            margin-top: 60px;
+        }
+
+        .tablaDept table{
+            width: 800px;
+        }
+
+        .tablaDept th{
+            color: green;
         }
         
         #buscarDesc{
