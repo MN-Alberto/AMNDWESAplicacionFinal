@@ -10,6 +10,8 @@
     require_once './model/DBPDO.php';
     require_once './model/Usuario.php';
     require_once './model/UsuarioPDO.php';
+    require_once './model/Departamento.php';
+    require_once './model/DepartamentoPDO.php';
     require_once './model/AppError.php';
 
     //Array asociativo para las distintas páginas del controlador con sus respectivas rutas.
@@ -24,7 +26,10 @@
         "rest" => "controller/cRest.php",
         "editar" => "controller/cEditar.php",
         "detalleFoto" => "controller/cDetalleFoto.php",
-        "mantenimientoDepartamento" => "controller/cMantenimientoDepartamento.php"
+        "mantenimientoDepartamento" => "controller/cMantenimientoDepartamento.php",
+        "altaDepartamento" => "controller/cAltaDepartamento.php",
+        "modificarDepartamento" => "controller/cConsultarModificarDepartamento.php",
+        "eliminarDepartamento" => "controller/cEliminarDepartamento.php"
     ];
     
     //Array asociativo para las distintas páginas de la vista con sus respectivas rutas.
@@ -40,6 +45,9 @@
         "rest" => "view/vRest.php",
         "editar" => "view/vEditar.php",
         "detalleFoto" => "view/vDetalleFoto.php",
-        "mantenimientoDepartamento" => "view/vMantenimientoDepartamento.php"
+        "mantenimientoDepartamento" => "view/vMantenimientoDepartamento.php",
+        "altaDepartamento" => "view/vAltaDepartamento.php",
+        "modificarDepartamento" => "view/vConsultarModificarDepartamento.php",
+        "eliminarDepartamento" => "view/vEliminarDepartamento.php"
     ];
 ?>

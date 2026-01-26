@@ -6,17 +6,45 @@
         exit;
     }
     
+    if(isset($_REQUEST['alta'])){
+        $_SESSION['paginaEnCurso']=$_SERVER['paginaAnterior'];
+        $_SESSION['paginaEnCurso']='altaDepartamento';
+        header('Location: indexAplicacionFinal.php');
+        exit;
+    }
+    
+    if(isset($_REQUEST['editarDept'])){
+        $codDept = $_REQUEST['codDepartamento'];
+        $_SESSION['paginaEnCurso']='modificarDepartamento';
+        $_SESSION['codDepartamentoEditar'] = $codDept;
+        header('Location: indexAplicacionFinal.php');
+        exit;
+    }
+    
+    if(isset($_REQUEST['eliminarDept'])){
+        $codDept = $_REQUEST['codDepartamento'];
+        $_SESSION['paginaEnCurso']=$_SERVER['paginaAnterior'];
+        $_SESSION['paginaEnCurso']='eliminarDepartamento';
+        $_SESSION['codDepartamentoBorrar'] = $codDept;
+        header('Location: indexAplicacionFinal.php');
+        exit;
+    }
+    
     require_once './model/Departamento.php';
     require_once './model/DepartamentoPDO.php';
     
     $entradaOK = true;
     $aErrores = ["descripcion" => ""]; //Array que almacena los errores en el campo descripcion
+    
 
     //si pulsamos en el boton buscar
     if (isset($_REQUEST['buscar'])) {
         //variable que almacena la descripcion buscada
         // el trim es para que si no se envia ningun valor o solo hay espacios la descripcion será "".
         $descripcion = trim($_REQUEST['descripcion'] ?? "");
+        
+        //se almacena en la sesion la descripcion buscada para volver a ponerla cuando volvamos a entrar al mantenimiento
+        $_SESSION['buscado']=$_REQUEST['descripcion'];
 
         //comprobamos la descripcion con la libreria de validacion de formularios
         $aErrores['descripcion']=validacionFormularios::comprobarAlfabetico($descripcion, 255, 0, 0);
@@ -28,9 +56,18 @@
         }
     }
 
-    //si no se busca, se inicializa la descripcion a "" por defecto para mostrar todos
+    //si no se busca
     else {
-        $descripcion = "";
+        //si existe en la sesion la descripcion buscada
+            if(isset($_SESSION['buscado'])){
+                //inicializamos la descripcion al valor que se busco anteriormente
+                $descripcion=$_SESSION['buscado'];
+            }
+            //si no existe, significa que no hay nada buscado anteriormente o ha sido borrado
+            else{
+                //inicializamos a "" para asi mostrar todos los departamentos
+                $descripcion = "";   
+            }
     }
     
     //array para almacenar la respuesta para la vista
@@ -45,7 +82,7 @@
     // y buscamos de nuevo para mostrar todos
     else {
         $descripcion = "";
-        $aDepartamentos = DepartamentoPDO::buscarDepartamentoPorDescripcion("");
+        $aDepartamentos = DepartamentoPDO::buscarDepartamentoPorDescripcion($descripcion);
     }
     
     //recorremos el array de departamentos y creamos un array
@@ -66,7 +103,7 @@
     $aVista=[
         'descripcion' => $descripcion,
         'aErrores' => $aErrores,
-        'aDepartamentos' => $aDepartamentosArray  
+        'aDepartamentos' => $aDepartamentosArray
     ];
 
     require_once $view['Layout']; //llamamos a la vista
