@@ -20,7 +20,7 @@
             display: flex;
             flex-direction: row;
             align-items: center;
-            height: 100px;
+            height: 80px;
             position: fixed;
             top: 0;
             left: 0;
@@ -249,6 +249,64 @@
             height: 25px;
             cursor: pointer;
             transition: all 0.5s ease;
+        }
+        
+        #botonBuscarDesc{
+            background-image: url(./webroot/lupa.png);
+            background-size: cover;
+            border: none;
+            background-repeat: no-repeat;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            background-color: transparent;
+            margin-right: 10px;
+            margin-left: 20px;
+        }
+        
+        #formDept{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        
+        #botonAltaDept{
+            background-image: url(./webroot/mas.png);
+            background-size: cover;
+            border: none;
+            background-repeat: no-repeat;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            background-color: transparent;
+            margin-right: 10px;
+        }
+        
+        #botonEditarDept{
+            background-image: url(./webroot/lapiz.png);
+            background-size: cover;
+            border: none;
+            background-repeat: no-repeat;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            background-color: transparent;
+            margin-right: 10px;
+        }
+        
+        #botonEliminarDept{
+            background-image: url(./webroot/papelera.png);
+            background-size: cover;
+            border: none;
+            background-repeat: no-repeat;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            background-color: transparent;
         }
 
         #Login{
@@ -544,15 +602,43 @@
         }
 
         .tablaDept table{
-            width: 800px;
+            width: 1000px;
         }
 
         .tablaDept th{
-            color: green;
+            color: black;
+            background: #d0c5c0;
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        
+        .tablaDept td{
+            color: black;
+            background: #ffffff;
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        
+        .tablaDept tr:nth-child(1){
+            height: 40px;
         }
         
         #buscarDesc{
             width: 300px !important;
+            background: white;
+            margin-left: 20px;
+        }
+        
+        .formDept{
+            border: 1px solid black;
+            width: 600px;
+            height: 150px;
+            background-color: #3c3c3c;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
         }
         
     </style>

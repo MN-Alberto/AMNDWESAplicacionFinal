@@ -7,11 +7,10 @@
 
     <main id="mantenimientoDept">
         <h1><b>Mantenimiento de departamentos</b></h1>
-        <form method="post">
+        <form action=<?php echo $_SERVER["PHP_SELF"];?> method="post" class="formDept">
         <label>Descripción:</label>
-            <input type="text" name="descripcion" value="" id="buscarDesc" placeholder="Introduce una descripción">
-            <input type="submit" name="buscar" value="Buscar">
-            
+            <input type="text" name="descripcion" id="buscarDesc" value="<?php echo $aVista['descripcion']; ?>" placeholder="Introduce una descripción">
+            <button type="submit" name="buscar" id="botonBuscarDesc"></button>
         <span style="color:red"></span>
         </form>
 <!-- Si el array de departamentos contiene algo se muestra la tabla -->
@@ -20,22 +19,30 @@
         ?>
 
         <div class="tablaDept">
-                <table border="1">
+                <table>
                 <tr>
                     <th>Código</th>
                     <th>Descripción</th>
                     <th>Fecha creación</th>
                     <th>Volumen</th>
                     <th>Fecha baja</th>
+                    <th>Opciones</th>
                 </tr>
 <!-- Recorremos todos los departamentos que haya devuelto la consulta y mostramos los datos de cada uno -->
                 <?php foreach ($aVista['aDepartamentos'] as $dep): ?>
                     <tr>
                         <td><?= $dep['codDepartamento'] ?></td>
-                        <td><?= $dep['descDepartamento'] ?></td>
+                        <td style="text-align: left;"><?= $dep['descDepartamento'] ?></td>
                         <td><?= $dep['fechaCreacion'] ?></td>
-                        <td><?= $dep['volumenNegocio'] ?></td>
+                        <td style="text-align: left;"><?= $dep['volumenNegocio'] ?></td>
                         <td><?= $dep['fechaBaja'] ?></td>
+                        <td>
+                            <form action=<?php echo $_SERVER["PHP_SELF"];?> method="post">
+                                <input type="hidden" name="codDepartamento" value="<?= $dep['codDepartamento']; ?>">
+                                <button type="submit" name="editarDept" id="botonEditarDept"></button>
+                                <button type="submit" name="eliminarDept" id="botonEliminarDept"></button>
+                            </form>
+                        </td>
                     </tr>
                 <?php 
                     endforeach; 
