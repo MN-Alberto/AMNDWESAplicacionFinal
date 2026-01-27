@@ -84,7 +84,7 @@
             margin: auto;
             background-color: #242222;
             text-align: center;
-            height: 100px;
+            height: 50px;
 	        color: white;
             position: fixed;
             bottom: 0;
@@ -420,6 +420,11 @@
             width: 1200px !important;
             height: 640px !important;
         }
+
+        #mainPublico h1{
+            position: relative;
+            top: -50px;
+        }
         
         #fecha{
             background: lightcyan !important;
@@ -438,29 +443,102 @@
         
         .container{
             position: relative;
-            width: 880px;
-            height: 400px;
+            width: 1000px;
+            height: 600px;
             margin: 0 auto;
-            background-color: blanchedalmond;
+            /* background-color: blanchedalmond; */
             display: flex;
             justify-content: center;
             align-items: center;
-            top: 100px;
+            top: -30px;
         }
         
-        .carrusel{
-            position: relative;
-            width: 900px;
-            height: 560px;
-            overflow: hidden;
-        }
-
-        .carrusel .fotos{
+        .container {
             display: flex;
+            justify-content: center;
         }
 
-        .fotos{
-            transition: all 0.5s ease;
+        .fotos {
+            position: relative; /* referencia para las imágenes */
+            width: 1000px;       /* ajusta al tamaño que quieras */
+            height: 600px;
+        }
+
+        .fotos img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* o cover si prefieres */
+        }
+
+        #foto1{
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        #foto1:hover{
+            scale: 1.10;
+        }
+
+        #foto2{
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        #foto2:hover{
+            scale: 1.10;
+        }
+
+        #foto3{
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        .botonesCarrusel{
+            position: absolute;
+            top: 620px;
+            left: 420px;
+            /* display: flex;
+            flex-direction: row; */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .botonesCarrusel div{
+            margin-right: 20px;
+        }
+
+        .botonesCarrusel div:hover{
+            scale: 1.05;
+        }
+
+        .boton1{
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            background: lightgreen;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .boton2{
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            background: wheat;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .boton3{
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            background: wheat;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .bRadio{
@@ -656,10 +734,12 @@
     ?>
     
     <footer>
-        <p><a href="../AMNDWESAplicacionFinal/indexAplicacionFinal.php">Alberto Mendez Nuñez</a></p>
-        <a href="https://github.com/MN-Alberto/AMNDWESAplicacionFinal" target="_blank"><img src="webroot/img.png" height="40px"/></a>
-        <a href="https://www.minecraft.net/es-es" target="_blank"><img src="webroot/cubo.png" height="40px"/></a>
-        <a href="webroot/alberto_mendez_cv.pdf" target="_blank"><img src="webroot/curriculum.png" height="40px"/></a>
+        <p>Alberto Mendez Nuñez | <a href="https://github.com/MN-Alberto/AMNDWESAplicacionFinal" target="_blank">Repositorio</a> | <a href="https://www.minecraft.net/es-es" target="_blank">Página Imitada</a>
+         | <a href="webroot/alberto_mendez_cv.pdf" target="_blank">CV</a>
+    </p>
+        <!-- <a href="https://github.com/MN-Alberto/AMNDWESAplicacionFinal" target="_blank"><img src="webroot/img.png" height="40px"/></a> -->
+        <!-- <a href="https://www.minecraft.net/es-es" target="_blank"><img src="webroot/cubo.png" height="40px"/></a> -->
+        <!-- <a href="webroot/alberto_mendez_cv.pdf" target="_blank"><img src="webroot/curriculum.png" height="40px"/></a> -->
     </footer>
 </body>
 </html>
