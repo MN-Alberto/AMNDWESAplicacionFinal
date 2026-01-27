@@ -11,12 +11,6 @@
         exit;
     }
     
-    if(isset($_REQUEST['salir'])){
-        session_destroy();
-        header("Location: ../AMNDWESProyectoDWES/indexProyectoDWES.php");
-        exit;
-    }
-    
     if(empty($_COOKIE['idioma'])){
         setcookie('idioma','ES',time() + 3600);
     }
