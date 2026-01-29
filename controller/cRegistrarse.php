@@ -1,11 +1,16 @@
 <?php
 
-    
-    if(isset($_REQUEST['Cancelar'])){
-        $_SESSION["paginaEnCurso"]='inicioPublico';
-        header("Location: indexAplicacionFinal.php");
-        exit;
-    }
+$respuestaCorrecta=false;
+
+if(isset($_REQUEST['Cancelar'])){
+    $_SESSION["paginaEnCurso"]='inicioPublico';
+    header("Location: indexAplicacionFinal.php");
+    exit;
+}
+
+if(isset($_REQUEST['AceptarPregunta'])){
+    if($_REQUEST['respuestaPregunta']==preguntaSeguridad){
+        $respuestaCorrecta=true;
 
     $aErrores=[
         'codUsuario' => null,
@@ -62,6 +67,12 @@
       else{
           $entradaOK=false;
       }
+      
+    }
+    else{
+        $respuestaCorrecta=false;
+    }
+}
     
     require_once $view["Layout"];
 ?>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>CFGS - Desarrollo de Aplicaciones Web</title>
     <style>
+        
         body {
             font-family: Arial, sans-serif;
             background: #171615;
@@ -26,6 +27,10 @@
             left: 0;
             width: 100%;
             border-bottom: 1px solid green;
+        }
+        
+        #fRegistro{
+            margin-top: 40px;
         }
         
         #h1Publico{
@@ -80,6 +85,11 @@
             list-style: none;
             padding: 0;
         }
+        
+        #fPregunta{
+            margin-top: 50px;
+        }
+        
         footer{
             margin: auto;
             background-color: #242222;
@@ -717,6 +727,61 @@
             flex-direction: row;
             justify-content: center;
             align-items: center;
+        }
+      
+        .tablaUsers th{
+            color: black;
+            background: #d0c5c0;
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+
+
+        #mantenimientoUsers h1 {
+            text-align: center;
+        }
+
+
+        .formUsers {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+
+        .tablaUsers {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Tabla */
+        .tablaUsers table {
+            border-collapse: collapse;
+            width: auto; 
+            table-layout: auto;
+        }
+
+        /* Celdas */
+        .tablaUsers th,
+        .tablaUsers td {
+            padding: 8px 12px;
+            text-align: center;
+            white-space: nowrap;
+            border: 1px solid #ccc;
+        }
+
+
+        .tablaUsers th {
+            font-weight: bold;
+        }
+
+
+        .tablaUsers td form {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
         }
         
     </style>

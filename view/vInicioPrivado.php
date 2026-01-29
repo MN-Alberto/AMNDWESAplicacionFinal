@@ -58,6 +58,15 @@
             <input type="submit" id="Aceptar" name="Aceptar" class="botones" value="Detalle"/>
             <input type="submit" id="Error" name="Error" class="botones" value="Error"/>
             <input type="submit" id="mantenimiento" name="mantenimiento" class="botones" value="Mantenimiento Dept"/>
+            
+            <?php
+                if($avInicioPrivado['perfil']==funcionalidadAdmin){
+            ?>
+                    <input type="submit" id="mantenimientoUsuarios" name="mantenimientoUsuarios" class="botones" value="Mantenimiento Users"/>
+            <?php
+                }
+            ?>
+            
             <input type="submit" id="rest" name="rest" class="botones" value="REST"/>
       </form> 
 </main>

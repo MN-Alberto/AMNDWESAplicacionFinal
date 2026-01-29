@@ -29,7 +29,8 @@
         "mantenimientoDepartamento" => "controller/cMantenimientoDepartamento.php",
         "altaDepartamento" => "controller/cAltaDepartamento.php",
         "modificarDepartamento" => "controller/cConsultarModificarDepartamento.php",
-        "eliminarDepartamento" => "controller/cEliminarDepartamento.php"
+        "eliminarDepartamento" => "controller/cEliminarDepartamento.php",
+        "mantenimientoUsuario" => "controller/cMantenimientoUsuario.php"
     ];
     
     //Array asociativo para las distintas páginas de la vista con sus respectivas rutas.
@@ -48,6 +49,12 @@
         "mantenimientoDepartamento" => "view/vMantenimientoDepartamento.php",
         "altaDepartamento" => "view/vAltaDepartamento.php",
         "modificarDepartamento" => "view/vConsultarModificarDepartamento.php",
-        "eliminarDepartamento" => "view/vEliminarDepartamento.php"
+        "eliminarDepartamento" => "view/vEliminarDepartamento.php",
+        "mantenimientoUsuario" => "view/vMantenimientoUsuario.php"
     ];
+    
+    const preguntaSeguridad="pimentel";
+    
+    const funcionalidadUsuario="usuario";
+    const funcionalidadAdmin="administrador";
 ?>
