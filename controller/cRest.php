@@ -10,66 +10,83 @@
         exit;
     }
 
-    //Clase para almacenar el metodo para mostrar la foto del dia según la fecha pasada en el input
-class fNasa{
-    // metodo mostrarFoto que recibe una fecha que por defecto es null
-    public static function mostrarFoto($fecha=null){
+        //Clase para almacenar el metodo para mostrar la foto del dia según la fecha pasada en el input
+        class fNasa{
+            // metodo mostrarFoto que recibe una fecha que por defecto es null
+            public static function mostrarFoto($fecha=null){
 
-        // creamos la variable foto que almacenará la respuesta que hagamos a la API con la foto de la fecha especificada
-        $foto=Rest::apiNasa($fecha);
+                // creamos la variable foto que almacenará la respuesta que hagamos a la API con la foto de la fecha especificada
+                $foto=Rest::apiNasa($fecha);
 
-        //si la variable foto contiene algo y su tipo de dato es una imagen
-        if($foto && isset($foto["media_type"]) && $foto["media_type"] === "image"){
-            
-        // Objeto con la URL normal
-        $nasaNormal = new NASA($foto["title"], $foto["url"], $foto["explanation"]);
+                //si la variable foto contiene algo y su tipo de dato es una imagen
+                if($foto && isset($foto["media_type"]) && $foto["media_type"] === "image"){
 
-        // Objeto con la URL HD
-        $nasaHD = new NASA($foto["title"], $foto["hdurl"] ?? $foto["url"], $foto["explanation"]);
+                // Objeto con la URL normal
+                $nasaNormal = new NASA($foto["title"], $foto["url"], $foto["explanation"]);
 
-        return [
-            "normal" => $nasaNormal,
-            "hd"     => $nasaHD
-        ];
+                // Objeto con la URL HD
+                $nasaHD = new NASA($foto["title"], $foto["hdurl"] ?? $foto["url"], $foto["explanation"]);
+
+                return [
+                    "normal" => $nasaNormal,
+                    "hd"     => $nasaHD
+                ];
+                }
+                //por defecto devolvemos null
+                return null;
+            }
         }
-        //por defecto devolvemos null
-        return null;
-    }
-}
 
-$oNasa = null; //variable que almacenara la foto
+        $oNasa = null; //variable que almacenara la foto
 
-//si se envia la fecha
-if(isset($_REQUEST["enviar"])){
-    
-    $fecha=$_REQUEST["fecha"] ?? date('Y-m-d'); //almacenamos la fecha del input a la variable fecha, sino es null
-    //si la fecha introducida es mayor a la fecha de hoy
-    if($fecha>date('Y-m-d')){
-        //inicializamos la fecha a null ya que no es una fecha valida
-        $fecha=null;
-    }
-    //si no es mayor significa que es menor o igual, por lo tanto una fecha valida
-    else{
-         $oNasa = fNasa::mostrarFoto($fecha); //almacenamos la respuesta del metodo en el objeto oNasa   
-    }
-}
-else{ //por defecto si no se envia ninguna fecha, la fecha se asigna a la de hoy, mostrando asi la foto del dia
-    $fecha=date("Y-m-d");
-    $oNasa = fNasa::mostrarFoto($fecha);
-}
+        //si se envia la fecha
+        if(isset($_REQUEST["enviar"])){
 
-if(isset($_REQUEST['detalleFoto'])){
-        $_SESSION["paginaEnCurso"]='detalleFoto';
-        header("Location: indexAplicacionFinal.php");
-        exit;
-}
+            $fecha=$_REQUEST["fecha"] ?? date('Y-m-d'); //almacenamos la fecha del input a la variable fecha, sino es null
+            //si la fecha introducida es mayor a la fecha de hoy
+            if($fecha>date('Y-m-d')){
+                //inicializamos la fecha a null ya que no es una fecha valida
+                $fecha=null;
+            }
+            //si no es mayor significa que es menor o igual, por lo tanto una fecha valida
+            else{
+                 $oNasa = fNasa::mostrarFoto($fecha); //almacenamos la respuesta del metodo en el objeto oNasa   
 
-$aVista=[
-  "titulo" => $oNasa['normal']->getTitulo(),
-  "foto" => $oNasa['normal']->getFoto(),
-  "fotoHD" => $oNasa['hd']->getFoto(),
-  "descripcion" => $oNasa['normal']->getDescripcion()
-];
+                 if ($oNasa) {
+                    $_SESSION['nasa'] = [
+                        'normal' => [
+                            'titulo' => $oNasa['normal']->getTitulo(),
+                            'foto' => $oNasa['normal']->getFoto(),
+                            'descripcion' => $oNasa['normal']->getDescripcion()
+                        ],
+                        'hd' => [
+                            'titulo' => $oNasa['hd']->getTitulo(),
+                            'foto' => $oNasa['hd']->getFoto(),
+                            'descripcion' => $oNasa['hd']->getDescripcion()
+                        ],
+                        'fecha' => $fecha
+                    ];
+                }
+            }
+        }
+        else{ //por defecto si no se envia ninguna fecha, la fecha se asigna a la de hoy, mostrando asi la foto del dia
+            $fecha=date("Y-m-d");
+            $oNasa = fNasa::mostrarFoto($fecha);
+        }
+
+        if(isset($_REQUEST['detalleFoto'])){
+                $_SESSION["paginaEnCurso"]='detalleFoto';
+                header("Location: indexAplicacionFinal.php");
+                exit;
+        }
+
+        $aVista=[
+          "titulo" => $oNasa['normal']->getTitulo(),
+          "foto" => $oNasa['normal']->getFoto(),
+          "fotoHD" => $oNasa['hd']->getFoto(),
+          "fecha" => $fecha,
+          "descripcion" => $oNasa['normal']->getDescripcion()
+        ];
 
         require_once $view["Layout"]; //llamada a la vista
 ?>
