@@ -12,7 +12,31 @@
 
 <main>   
 <h1><b>Login</b></h1>
-        <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="f1">
+
+<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="fPregunta" <?php if ($respuestaCorrecta) echo 'style="display:none"'; ?>>
+        <table>
+            <tr style="background-color:#d0c5c0; color:black;">
+                <td colspan="2"><h2>PREGUNTA DE SEGURIDAD</h2></td>
+            </tr>
+            
+            <tr style="background-color:#ffffff; color:black;">
+                <td><label for="usuario" id="us">Responda a la pregunta de seguridad para poder registrarse:</label></td>
+                <td><input type="text" name="respuestaPregunta" id="usuario" placeholder="Introduce respuesta"></td>
+            
+            </tr>
+            </table>
+            <br>
+            <div>
+            <input type="submit" id="Aceptar" name="AceptarPregunta" value="Aceptar"/>
+            <input type="submit" id="Cancelar" name="Cancelar" value="Cancelar"/>
+            </div>
+        </form>
+
+        <?php
+            if($respuestaCorrecta){
+               
+        ?>
+        <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="fRegistro">
         <table>
             <tr style="background-color:#d0c5c0; color:black;">
                 <td colspan="2"><h2>REGISTRARSE</h2></td>
@@ -42,4 +66,8 @@
             <input type="submit" id="Cancelar" name="Cancelar" value="Cancelar"/>
             </div>
         </form>
+
+        <?php
+            }
+        ?>
     </main>

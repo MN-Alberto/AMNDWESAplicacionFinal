@@ -7,7 +7,7 @@
 
    require_once './model/DBPDO.php';
 
-    if(empty($_SESSION['userAMNDWESAplicacionFinal'])){
+    if(!isset($_SESSION['userAMNDWESAplicacionFinal'])){
         $_SESSION['paginaAnterior']=$_SESSION['paginaEnCurso'];
         $_SESSION['paginaEnCurso']='inicioPublico';
         header("Location: indexAplicacionFinal.php");
@@ -56,10 +56,18 @@
         $_COOKIE['idioma']='ES';
     }
     
+    if(isset($_REQUEST['mantenimientoUsuarios'])){
+        $_SESSION["paginaAnterior"]=$_SESSION["paginaEnCurso"];
+        $_SESSION["paginaEnCurso"]="mantenimientoUsuario";
+        header("Location: indexAplicacionFinal.php");
+        exit;
+    }
+    
     $avInicioPrivado=[
         'descUsuario' => $_SESSION['userAMNDWESAplicacionFinal']->getDescUsuario(),
         'numConexiones' => $_SESSION['userAMNDWESAplicacionFinal']->getNumConexiones(),
-        'fechaHoraUltimaConexionAnterior' => $_SESSION['userAMNDWESAplicacionFinal']->getFechaHoraUltimaConexionAnterior()
+        'fechaHoraUltimaConexionAnterior' => $_SESSION['userAMNDWESAplicacionFinal']->getFechaHoraUltimaConexionAnterior(),
+        'perfil' => $_SESSION['userAMNDWESAplicacionFinal']->getPerfil()
     ];
 
 require_once $view["Layout"];
