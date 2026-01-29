@@ -51,15 +51,5 @@
             <td></td>
             <td></td>
         </tr>
-        <tr>
-            <td>
-                <p>
-                
-                </p>
-            </td>
-            <td></td>
-            <td></td>
-        </tr>
-
     </table>
     </main>

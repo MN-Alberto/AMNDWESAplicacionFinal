@@ -1,16 +1,23 @@
 <?php
 
-$respuestaCorrecta=false;
+    if (!isset($_SESSION['respuestaCorrecta'])) {
+        $_SESSION['respuestaCorrecta'] = false;
+    }
 
-if(isset($_REQUEST['Cancelar'])){
-    $_SESSION["paginaEnCurso"]='inicioPublico';
-    header("Location: indexAplicacionFinal.php");
-    exit;
-}
+    if(isset($_REQUEST['Cancelar'])){
+        $_SESSION["paginaEnCurso"]='inicioPublico';
+        header("Location: indexAplicacionFinal.php");
+        exit;
+    }
 
-if(isset($_REQUEST['AceptarPregunta'])){
-    if($_REQUEST['respuestaPregunta']==preguntaSeguridad){
-        $respuestaCorrecta=true;
+    if(isset($_REQUEST['AceptarPregunta'])){
+        if($_REQUEST['respuestaPregunta']===preguntaSeguridad){
+            $respuestaCorrecta=true;
+        }else {
+                $_SESSION['respuestaCorrecta'] = false;
+                $errorPregunta = "Respuesta incorrecta. Intenta de nuevo.";
+            }
+        }
 
     $aErrores=[
         'codUsuario' => null,
@@ -52,7 +59,7 @@ if(isset($_REQUEST['AceptarPregunta'])){
         if($oUsuario===null){
             $entradaOK=false;
             
-            $_SESSION['paginaEnCurso']='login';
+            $_SESSION['paginaEnCurso']='inicioPublico';
             header('Location: indexAplicacionFinal.php');
             exit;
         }
@@ -67,12 +74,6 @@ if(isset($_REQUEST['AceptarPregunta'])){
       else{
           $entradaOK=false;
       }
-      
-    }
-    else{
-        $respuestaCorrecta=false;
-    }
-}
     
     require_once $view["Layout"];
 ?>

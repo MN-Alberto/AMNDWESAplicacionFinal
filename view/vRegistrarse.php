@@ -12,8 +12,10 @@
 
 <main>   
 <h1><b>Login</b></h1>
-
-<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="fPregunta" <?php if ($respuestaCorrecta) echo 'style="display:none"'; ?>>
+<?php
+if (!$_SESSION['respuestaCorrecta']){
+?>
+<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="fPregunta">
         <table>
             <tr style="background-color:#d0c5c0; color:black;">
                 <td colspan="2"><h2>PREGUNTA DE SEGURIDAD</h2></td>
@@ -31,9 +33,12 @@
             <input type="submit" id="Cancelar" name="Cancelar" value="Cancelar"/>
             </div>
         </form>
+<?php
+}
+?>
 
         <?php
-            if($respuestaCorrecta){
+            if($_SESSION['respuestaCorrecta']){
                
         ?>
         <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="fRegistro">
