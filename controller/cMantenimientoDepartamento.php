@@ -1,4 +1,12 @@
 <?php
+
+    if(!isset($_SESSION['userAMNDWESAplicacionFinal'])){
+        $_SESSION['paginaAnterior']=$_SESSION['paginaEnCurso'];
+        $_SESSION['paginaEnCurso']='inicioPublico';
+        header("Location: indexAplicacionFinal.php");
+        exit;
+    }
+
     if(isset($_REQUEST['cerrar'])){
         $_SESSION['paginaEnCurso']=$_SERVER['paginaAnterior'];
         $_SESSION['paginaEnCurso']='inicioPrivado';
@@ -14,18 +22,17 @@
     }
     
     if(isset($_REQUEST['editarDept'])){
-        $codDept = $_REQUEST['codDepartamento'];
-        $_SESSION['paginaEnCurso']='modificarDepartamento';
-        $_SESSION['codDepartamentoEditar'] = $codDept;
+        $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['editarDept'];
+        $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+        $_SESSION['paginaEnCurso'] = 'modificarDepartamento';
         header('Location: indexAplicacionFinal.php');
         exit;
     }
-    
+
     if(isset($_REQUEST['eliminarDept'])){
-        $codDept = $_REQUEST['codDepartamento'];
-        $_SESSION['paginaEnCurso']=$_SERVER['paginaAnterior'];
-        $_SESSION['paginaEnCurso']='eliminarDepartamento';
-        $_SESSION['codDepartamentoBorrar'] = $codDept;
+        $_SESSION['codDepartamentoBorrar'] = $_REQUEST['eliminarDept'];
+        $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+        $_SESSION['paginaEnCurso'] = 'eliminarDepartamento';
         header('Location: indexAplicacionFinal.php');
         exit;
     }
