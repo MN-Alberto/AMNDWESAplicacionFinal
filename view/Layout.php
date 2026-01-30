@@ -784,6 +784,12 @@
             gap: 5px;
         }
         
+        #fEditDept{
+            display: flex;
+            flex-direction: column;
+            
+        }
+        
     </style>
 </head>
 <body>

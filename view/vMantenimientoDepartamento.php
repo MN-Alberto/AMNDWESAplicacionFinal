@@ -37,10 +37,9 @@
                         <td style="text-align: left;"><?= $dep['volumenNegocio'] ?></td>
                         <td><?= $dep['fechaBaja'] ?></td>
                         <td>
-                            <form action=<?php echo $_SERVER["PHP_SELF"];?> method="post">
-                                <input type="hidden" name="codDepartamento" value="<?= $dep['codDepartamento']; ?>">
-                                <button type="submit" name="editarDept" id="botonEditarDept"></button>
-                                <button type="submit" name="eliminarDept" id="botonEliminarDept"></button>
+                            <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="f1">
+                                <button type="submit" name="editarDept" id="botonEditarDept" value="<?php echo $dep['codDepartamento']; ?>"></button>
+                                <button type="submit" name="eliminarDept" id="botonEliminarDept" value="<?php echo $dep['codDepartamento']; ?>"></button>
                             </form>
                         </td>
                     </tr>
