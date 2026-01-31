@@ -26,6 +26,47 @@
       'volumenDeNegocio' => '' 
     ];
     
+    if(isset($_REQUEST['confirmarEditar'])){
+      $aErrores['descDepartamento']= validacionFormularios::comprobarAlfabetico($_REQUEST['descDept'],255,0,1);
+      $volumenNegocio=str_replace(',', '.', $_REQUEST['volumenNegocio'] ?? "");
+
+        foreach ($aErrores as $valorCampo => $error) {
+            if ($error != null) {
+                $entradaOK = false;
+            }
+        }
+
+    }
+
+    else{
+      $entradaOK=false;
+    }
+
+    if($entradaOK){
+        $oDepartamento=DepartamentoPDO::buscarDepartamentoPorCodigo($_SESSION['codDepartamentoEnCurso']);
+
+        DepartamentoPDO::modificarDepartamento($_SESSION['codDepartamentoEnCurso'], $_REQUEST['descDept'], str_replace(',', '.', $_REQUEST['volumenNegocio']));
     
+        $_SESSION['paginaEnCurso']='modificarDepartamento';
+        header('Location: indexAplicacionFinal.php');
+        exit;
+    }
+
+    $oDepartamento=DepartamentoPDO::buscarDepartamentoPorCodigo($_SESSION['codDepartamentoEnCurso']);
+    
+    $fCreacion=$oDepartamento->getFechaCreacionDepartamento();
+
+    if(!is_null($oDepartamento->getFechaBajaDepartamento())){
+        $fBaja=$oDepartamento->getFechaBajaDepartamento();
+    }
+
+    $aVista=[
+      'codDepartamento' => $oDepartamento->getCodDepartamento(),
+      'descDepartamento' => $oDepartamento->getDescDepartamento(),
+      'fechaCreacion' => $fCreacion->format('Y-m-d'),
+      'volumenNegocio' => $oDepartamento->getVolumenDeNegocio(),
+      'fechaBaja' => isset($fBaja) ? $fBaja->format('Y-m-d') : ''
+    ];
+
     require_once $view['Layout'];
 ?>

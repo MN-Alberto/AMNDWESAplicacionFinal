@@ -55,5 +55,39 @@
         // depende de lo que haya devuelto la consulta y si filtramos por descripcion o no
         return $aDepartamentos;
     }
+
+    public static function buscarDepartamentoPorCodigo(string $codDepartamento){
+        $query="SELECT * FROM T02_Departamento WHERE T02_CodDepartamento like ?";
+
+        $resultado=DBPDO::ejecutaConsulta($query,["%$codDepartamento%"]);
+
+        if (!$resultado) {
+            return null;
+        }
+
+        return new Departamento(
+            $resultado['T02_CodDepartamento'],
+            $resultado['T02_DescDepartamento'],
+            new DateTime($resultado['T02_FechaCreacionDepartamento']),
+            $resultado['T02_VolumenDeNegocio'],
+                $resultado['T02_FechaBajaDepartamento'] !== null 
+                ? new DateTime($resultado['T02_FechaBajaDepartamento']) 
+                : null
+        );
+
+    }
+
+    public static function modificarDepartamento(string $codDepartamento, string $descDepartamento, float $volumenNegocio){
+        $query="UPDATE T02_Departamento SET T02_DescDepartamento=:descDepartamento,
+                T02_VolumenDeNegocio=:volumenNegocio WHERE T02_CodDepartamento=:codDepartamento";
+
+        $parametros=[
+            'descDepartamento' => $descDepartamento,
+            'volumenNegocio' => $volumenNegocio,
+            'codDepartamento' => $codDepartamento
+        ];
+
+        DBPDO::ejecutaConsulta($query, $parametros);
+    }
     }
 ?>

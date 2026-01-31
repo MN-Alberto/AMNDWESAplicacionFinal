@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>CFGS - Desarrollo de Aplicaciones Web</title>
+    <title>Aplicacion Final</title>
+    
     <style>
         
         body {
@@ -102,10 +103,11 @@
             width: 100%;
             border-top: 1px solid green;
         }
-	main{
-	text-align:center;
-	justify-content:center;
-	}
+        main{
+        text-align:center;
+        justify-content:center;
+        }
+
         a{
             text-decoration: none;
             color:purple;
@@ -756,14 +758,12 @@
             justify-content: center;
         }
 
-        /* Tabla */
         .tablaUsers table {
             border-collapse: collapse;
             width: auto; 
             table-layout: auto;
         }
 
-        /* Celdas */
         .tablaUsers th,
         .tablaUsers td {
             padding: 8px 12px;
@@ -789,8 +789,83 @@
             flex-direction: column;
             
         }
+
+        #fEditDept {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #fEditDept {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-family: Arial, Helvetica, sans-serif;
+
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            row-gap: 15px;
+            column-gap: 15px;
+            align-items: center;
+        }
+
+        #fEditDept label {
+            text-align: right;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #fEditDept input[type="text"] {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        #fEditDept input:disabled {
+            background-color: #e9e9e9;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        #fEditDept input[type="text"]:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 4px rgba(0,123,255,0.4);
+        }
+
+        #btnConfEdit {
+            grid-column: 1 / -1;
+            justify-self: center; 
+
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        #btnConfEdit:hover {
+            background-color: #0056b3;
+            scale: 1.10 !important;
+        }
         
     </style>
+
+
+
 </head>
 <body>
     
