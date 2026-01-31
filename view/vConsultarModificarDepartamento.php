@@ -10,19 +10,21 @@
 
         <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="fEditDept">
             <label for="codDept">Código:</label>
-            <input type="text" name="codDept" id="cDeptEditar" value="<?php echo $_SESSION['codDepartamentoEnCurso']; ?>" disabled/>
+            <input type="text" name="codDept" id="cDeptEditar" value="<?php echo $aVista['codDepartamento']; ?>" disabled/>
             
             <label for="descDept">Descripción:</label>
-            <input type="text" name="descDept" id="dDeptEditar"/>
+            <input type="text" name="descDept" id="dDeptEditar" value="<?php echo $aVista['descDepartamento']; ?>"/>
             
             <label for="fCreacionDept">Fecha de Creación:</label>
-            <input type="text" name="fCreacionDept" id="fCreaDeptEditar" disabled/>
+            <input type="text" name="fCreacionDept" id="fCreaDeptEditar" value="<?php echo $aVista['fechaCreacion']; ?>" disabled/>
             
-            <label for="fCreacionDept">Volumen de Negocio:</label>
-            <input type="text" name="fCreacionDept" id="fCreaDeptEditar"/>
+            <label for="volumen">Volumen de Negocio:</label>
+            <input type="text" name="volumenNegocio" id="fCreaDeptEditar" value="<?php echo $aVista['volumenNegocio']; ?>"/>
             
             <label for="fBajaDept">Fecha de Baja:</label>
-            <input type="text" name="fBajaDept" id="fBajaDeptEditar"/>
+            <input type="text" name="fBajaDept" id="fBajaDeptEditar" value="<?php echo $aVista['fechaBaja']; ?>" disabled/>
+
+            <button type="submit" name="confirmarEditar" id="btnConfEdit">Aceptar</button>
         </form>
         
     </main>
