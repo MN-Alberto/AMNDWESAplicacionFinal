@@ -123,6 +123,16 @@
             //devolvemos el array con los departamentos que devuelva, pueden ser 1 o varios
             // depende de lo que haya devuelto la consulta y si filtramos por descripcion o no
             return $aUsuarios;
-    }
+        }
+
+
+        public static function modificarUsuario(string $codUsuario, string $descUsuario){
+
+            $query = "UPDATE T01_Usuario SET T01_DescUsuario = ? WHERE T01_CodUsuario = ?";
+
+            $parametros = [$descUsuario, $codUsuario];
+
+            return DBPDO::ejecutaConsulta($query, $parametros);
+        }
     }
 ?>
