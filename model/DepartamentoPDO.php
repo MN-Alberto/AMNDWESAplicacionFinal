@@ -57,14 +57,18 @@
     }
 
     public static function buscarDepartamentoPorCodigo(string $codDepartamento){
+        //realizamos una consulta a la base de datos en la que cogemos el depratamento en base al codigo que le pasemos
         $query="SELECT * FROM T02_Departamento WHERE T02_CodDepartamento like ?";
 
+        //almacenamos la ejecucion de la consulta en base al query y a los parametros en la variable resultado
         $resultado=DBPDO::ejecutaConsulta($query,["%$codDepartamento%"]);
 
+        //si resultado no contiene nada significa que no existe nigun departamento con ese codigo o ha habido algun error
         if (!$resultado) {
             return null;
         }
 
+        //si contiene algo, devolvemos un objeto departamento con los campos del resultado, cambiando los campos fecha a dateTime y el campo baja tenemos en cuenta que puede ser null
         return new Departamento(
             $resultado['T02_CodDepartamento'],
             $resultado['T02_DescDepartamento'],
@@ -78,16 +82,38 @@
     }
 
     public static function modificarDepartamento(string $codDepartamento, string $descDepartamento, float $volumenNegocio){
+        
+        //este query actualiza la descripcion y el volumen de negocio del departamento que le indiquemos en el codigo de departamento
         $query="UPDATE T02_Departamento SET T02_DescDepartamento=:descDepartamento,
                 T02_VolumenDeNegocio=:volumenNegocio WHERE T02_CodDepartamento=:codDepartamento";
 
+        //creamos un array asociativo para almacenar los diferentes campos para la consulta
         $parametros=[
             'descDepartamento' => $descDepartamento,
             'volumenNegocio' => $volumenNegocio,
             'codDepartamento' => $codDepartamento
         ];
+        
+        //ejecutamos la consulta con los parametros indicados
 
         DBPDO::ejecutaConsulta($query, $parametros);
     }
+    
+    public static function eliminarDepartamento(string $codDepartamento){
+        
+        //esta consulta borra el usuario al que le corresponda el codigo que le hemos indicado
+        $query="DELETE FROM T02_Departamento WHERE T02_CodDepartamento= ?";
+        
+        //le asignamos un array indexado con el valor del codigo de departamento a los parametros
+        $parametros=[$codDepartamento];
+        
+        //ejecutamos la consulta y lo almacenamos en resultado
+        $resultado= DBPDO::ejecutaConsulta($query, $parametros);
+        
+        //si el resultado esta vacio significa que no se ha borrado nada o que algo ha ido mal
+            if(!$resultado){
+                return null;
+            }
+        }
     }
 ?>
