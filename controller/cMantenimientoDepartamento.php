@@ -30,7 +30,7 @@
     }
 
     if(isset($_REQUEST['eliminarDept'])){
-        $_SESSION['codDepartamentoBorrar'] = $_REQUEST['eliminarDept'];
+        $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['eliminarDept'];
         $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
         $_SESSION['paginaEnCurso'] = 'eliminarDepartamento';
         header('Location: indexAplicacionFinal.php');

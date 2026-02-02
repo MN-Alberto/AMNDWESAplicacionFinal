@@ -12,7 +12,7 @@
 
     if(isset($_REQUEST['AceptarPregunta'])){
         if($_REQUEST['respuestaPregunta']===preguntaSeguridad){
-            $respuestaCorrecta=true;
+            $_SESSION['respuestaCorrecta'] = true;
         }else {
                 $_SESSION['respuestaCorrecta'] = false;
                 $errorPregunta = "Respuesta incorrecta. Intenta de nuevo.";
@@ -54,8 +54,7 @@
         $aRespuestas['descUsuario']=$_REQUEST['desc'];
         $aRespuestas['password']=$_REQUEST['pass'];
 
-        $oUsuario= UsuarioPDO::registrarUsuario($aRespuestas['codUsuario'], $aRespuestas['descUsuario'], $aRespuestas['password']);
-            
+        $oUsuario= UsuarioPDO::registrarUsuario($aRespuestas['codUsuario'], $aRespuestas['descUsuario'], $aRespuestas['password']);  
         if($oUsuario===null){
             $entradaOK=false;
             
