@@ -644,7 +644,6 @@
         
         #tablaDatos{
             position: relative;
-            border: 1px solid black;
             width: 500px;
             top: 20px;
             left: 130px;
@@ -652,6 +651,23 @@
             text-align: left !important;
             align-items: left !important;
             border-radius: 10px;
+        }
+
+        .botonCentro{
+            text-align: center;
+        }
+
+        #aceptarCambios{
+            height: 40px;
+            width: 140px;
+            border-radius: 10px;
+            transition: all 0.5s ease;
+            background: green;
+            cursor: pointer;
+        }
+
+        #aceptarCambios:hover{
+            scale: 1.10 !important;
         }
         
         #tablaDatos tr{

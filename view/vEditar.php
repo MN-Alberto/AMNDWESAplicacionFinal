@@ -28,7 +28,7 @@
                             
                             <tr>
                                 <td>Descripción:</td>
-                                <td><input type="text" name="cambiarNombre" id="cambiarDesc" value="<?php echo $descripcion; ?>"></td>
+                                <td><input type="text" name="cambiarDesc" id="cambiarDesc" value="<?php echo $descripcion; ?>"></td>
                             </tr>
                             
                             <tr>
@@ -38,12 +38,16 @@
                             
                             <tr>
                                 <td>Ultima Conexión:</td>
-                                <td><input type="text" name="cambiarNombre" id="cambiarNombre" value="<?php echo $ultimaConexion; ?>" disabled></td>
+                                <td><input type="text" name="cambiarConx" id="cambiarNombre" value="<?php echo $ultimaConexion; ?>" disabled></td>
                             </tr>
                             
                             <tr>
                                 <td>Ultima Conexión Anterior:</td>
-                                <td><input type="text" name="cambiarNombre" id="cambiarNombre" value="<?php echo $ultimaConexionAnterior; ?>" disabled></td>
+                                <td><input type="text" name="cambiarUltAnt" id="cambiarNombre" value="<?php echo $ultimaConexionAnterior; ?>" disabled></td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2" class="botonCentro"><button type="submit" name="aceptarCambios" id="aceptarCambios">Aceptar</button></td>
                             </tr>
                         </table>
                     </form>
