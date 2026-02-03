@@ -1,6 +1,20 @@
 <?php
 
+/*
+ * Autor: Alberto Méndez
+ * Fecha de actualización: 03/02/2025
+ */
+
+/**
+ * Clase Rest
+ *
+ * Gestiona llamadas a APIs externas, en este caso a la API de la NASA.
+ */
+
 class Rest {
+    /**
+     * @var string Clave de la API de la NASA
+     */
     const apiKeyNasa = 'ocZPxdxEeLa7ANfRXEkYm3CvfJka3TJuIg9BAbMc'; //token para llamar a la API de la nasa
     // OPCIÓN DE DESARROLLO CON file_get_contents
     // public static function apiNasa($fecha = null) {
@@ -25,6 +39,13 @@ class Rest {
 
 
     // OPCIÓN DE EXPLOTACIÓN CON cURL
+
+    /**
+     * Obtiene información de la NASA para un día específico o el día actual dependiendo de si se le pasa una fecha o no
+     *
+     * @param string|null $fecha Fecha en formato YYYY-MM-DD, opcional, si no se le pasa nada será la del día de hoy
+     * @return array|null Devuelve un array con los datos de la API o null si da error
+     */
     public static function apiNasa($fecha = null) {
         //construimos la URL base de la API con la clave que obtuvimos de la NASA
         $url = 'https://api.nasa.gov/planetary/apod?api_key=' . self::apiKeyNasa;

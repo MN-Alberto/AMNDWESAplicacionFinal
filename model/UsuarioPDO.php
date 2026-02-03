@@ -1,14 +1,30 @@
 <?php
     
     /*
-    * Autor: Alberto Méndez 
-    * Fecha de actualización: 18/12/2025
+    * Autor: Alberto Méndez
+    * Fecha de actualización: 03/02/2025
     */
 
     require_once "DBPDO.php";
     require_once "Usuario.php";
 
+
+    /**
+     * Clase UsuarioPDO
+     *
+     * Gestiona consultas contra la tabla T01_Usuario
+     * mediante consultas a la base de datos usando DBPDO.
+     */
     class UsuarioPDO{  
+
+        /**
+         * Valida un usuario por código y contraseña
+         *
+         * @param string $codUsuario Código del usuario a validar
+         * @param string $password Contraseña del usuario a validar
+         * @return Usuario|null Devuelve un objeto Usuario si es válido, null si no lo es
+         */
+
         public static function validarUsuario(string $codUsuario, string $password) {
             $query="SELECT * FROM T01_Usuario 
                 WHERE T01_CodUsuario = ? 
@@ -36,6 +52,13 @@
             );
             return $usuario;
         }
+
+        /**
+         * Actualiza la fecha de última conexión y número de accesos del usuario
+         *
+         * @param string $codUsuario Código del usuario a actualizar
+         * @return void
+         */
         
         public static function actualizarUltimaConexion(string $codUsuario) {
             
@@ -45,6 +68,15 @@
 
             DBPDO::ejecutaConsulta($query, [$codUsuario]);
         }
+
+        /**
+         * Registra un nuevo usuario en la base de datos.
+         *
+         * @param string $codUsuario Código del usuario a registrar
+         * @param string $descUsuario Descripción o nombre del usuario a registrar
+         * @param string $password Contraseña del usuario a registrar
+         * @return Usuario|null Devuelve el objeto Usuario creado o null si da error
+         */
         
         public static function registrarUsuario(string $codUsuario, string $descUsuario, string $password){
             
@@ -76,6 +108,13 @@
 
         }
         
+        /**
+         * Busca usuario por descripción
+         *
+         * @param string $descUsuario Texto para buscar al usuario
+         * @return Usuario[] Array de objetos de tipo Usuario
+         */
+
         public static function buscarUsuarioPorDescripcion(string $descUsuario) {
 
             //Si la descripcion esta vaciamostramos todos los departamentos
@@ -125,6 +164,15 @@
             return $aUsuarios;
         }
 
+        /**
+         * Modifica la descripción de un usuario
+         *
+         * @param string $codUsuario Código del usuario a modificar
+         * @param string $descUsuario Nueva descripción del usuario
+         * @return mixed Resultado de la consulta DBPDO
+         */
+
+        //NOTA: el tipo mixed en PHPDoc significa que puede devolver diferentes tipos de valores, no tiene un tipo garantizado como int, String etc.
 
         public static function modificarUsuario(string $codUsuario, string $descUsuario){
 
