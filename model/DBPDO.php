@@ -1,64 +1,84 @@
 <?php
 
 /*
- * Autor: Alberto Méndez 
- * Fecha de actualización: 18/12/2025
- * 
+ * Autor: Alberto Méndez
+ * Fecha de actualización: 03/02/2025
  */
 
-    require_once "./config/confDB.php";
-    require_once 'AppError.php';
+require_once "./config/confDB.php";
+require_once 'AppError.php';
 
-    class DBPDO {
-        public static function ejecutaConsulta(string $sentenciaSQL, array $parametros = []) {
-            try {
-                $miDB=new PDO(RUTA, USUARIO, PASS);
+/**
+ * Clase DBPDO
+ *
+ * Clase encargada de ejecutar consultas a la base de datos
+ */
+class DBPDO {
 
-                $query=$miDB->prepare($sentenciaSQL);
+    /**
+     * Ejecuta una consulta SQL que devuelve un único registro.
+     *
+     * @param string $sentenciaSQL Consulta SQL
+     * @param array $parametros Parámetros asociados a la consulta
+     * @return mixed Devuelve un registro (array) o false si no hay resultados
+     */
+    public static function ejecutaConsulta(string $sentenciaSQL, array $parametros = []) {
+        try {
+            $miDB = new PDO(RUTA, USUARIO, PASS);
 
-                $query->execute($parametros);
+            $query = $miDB->prepare($sentenciaSQL);
+            $query->execute($parametros);
 
-                return $query->fetch();
-                
-        } catch (PDOException $e){
-                $_SESSION['Error'] = new AppError(
-                    $e->getCode(),
-                    $e->getMessage(),
-                    $e->getFile(),
-                    $e->getLine(),
-                    $_SESSION['paginaEnCurso']
-                );
-                $_SESSION["paginaAnterior"] = $_SESSION["paginaEnCurso"];
-                $_SESSION["paginaEnCurso"] = "error";
+            return $query->fetch();
 
-                header("Location: indexAplicacionFinal.php");
-                exit;
+        } catch (PDOException $e) {
+            $_SESSION['Error'] = new AppError(
+                $e->getCode(),
+                $e->getMessage(),
+                $e->getFile(),
+                $e->getLine(),
+                $_SESSION['paginaEnCurso']
+            );
+
+            $_SESSION["paginaAnterior"] = $_SESSION["paginaEnCurso"];
+            $_SESSION["paginaEnCurso"] = "error";
+
+            header("Location: indexAplicacionFinal.php");
+            exit;
         }
     }
 
-        public static function ejecutaConsultaMultiple(string $sentenciaSQL, array $parametros = []) {
-            try {
-                $miDB = new PDO(RUTA, USUARIO, PASS);
+    /**
+     * Ejecuta una consulta SQL que devuelve varios registros.
+     *
+     * @param string $sentenciaSQL Consulta SQL
+     * @param array $parametros Parámetros asociados a la consulta
+     * @return array Devuelve un array asociativo con todos los registros obtenidos de la consulta
+     */
+    public static function ejecutaConsultaMultiple(string $sentenciaSQL, array $parametros = []) {
+        try {
+            $miDB = new PDO(RUTA, USUARIO, PASS);
 
-                $query = $miDB->prepare($sentenciaSQL);
-                $query->execute($parametros);
+            $query = $miDB->prepare($sentenciaSQL);
+            $query->execute($parametros);
 
-                return $query->fetchAll(PDO::FETCH_ASSOC);
+            return $query->fetchAll(PDO::FETCH_ASSOC);
 
-            } catch (PDOException $e) {
-                $_SESSION['Error'] = new AppError(
-                    $e->getCode(),
-                    $e->getMessage(),
-                    $e->getFile(),
-                    $e->getLine(),
-                    $_SESSION['paginaEnCurso']
-                );
-                $_SESSION["paginaAnterior"] = $_SESSION["paginaEnCurso"];
-                $_SESSION["paginaEnCurso"] = "error";
+        } catch (PDOException $e) {
+            $_SESSION['Error'] = new AppError(
+                $e->getCode(),
+                $e->getMessage(),
+                $e->getFile(),
+                $e->getLine(),
+                $_SESSION['paginaEnCurso']
+            );
 
-                header("Location: indexAplicacionFinal.php");
-                exit;
-            }
+            $_SESSION["paginaAnterior"] = $_SESSION["paginaEnCurso"];
+            $_SESSION["paginaEnCurso"] = "error";
+
+            header("Location: indexAplicacionFinal.php");
+            exit;
         }
- }
+    }
+}
 ?>
