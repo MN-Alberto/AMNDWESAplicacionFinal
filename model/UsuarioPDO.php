@@ -1,19 +1,15 @@
 <?php
-    
-    /*
-    * Autor: Alberto Méndez
-    * Fecha de actualización: 03/02/2025
-    */
-
     require_once "DBPDO.php";
     require_once "Usuario.php";
-
 
     /**
      * Clase UsuarioPDO
      *
      * Gestiona consultas contra la tabla T01_Usuario
      * mediante consultas a la base de datos usando DBPDO.
+     *
+     * @author Alberto Méndez
+     * @date   2025-02-03
      */
     class UsuarioPDO{  
 

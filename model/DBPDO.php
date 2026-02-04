@@ -1,17 +1,14 @@
 <?php
-
-/*
- * Autor: Alberto Méndez
- * Fecha de actualización: 03/02/2025
- */
-
 require_once "./config/confDB.php";
 require_once 'AppError.php';
 
 /**
  * Clase DBPDO
  *
- * Clase encargada de ejecutar consultas a la base de datos
+ * Clase encargada de ejecutar consultas a la base de datos.
+ *
+ * @author Alberto Méndez
+ * @date   2025-02-03
  */
 class DBPDO {
 

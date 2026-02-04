@@ -1,16 +1,13 @@
 <?php
 
-/*
- * Autor: Alberto Méndez
- * Fecha de actualización: 03/02/2025
- */
-
 /**
  * Clase Rest
  *
  * Gestiona llamadas a APIs externas, en este caso a la API de la NASA.
+ *
+ * @author Alberto Méndez
+ * @date   2025-02-03
  */
-
 class Rest {
     /**
      * @var string Clave de la API de la NASA
