@@ -1,16 +1,15 @@
 <?php
 
-/*
- * Autor: Alberto Méndez
- * Fecha de actualización: 03/02/2025
- */
-
 /**
  * Clase AppError
  *
  * Representa un error de la aplicación con información detallada
  * como código, descripción, archivo, línea y página de redirección.
+ *
+ * @author Alberto Méndez
+ * @date   2025-02-03
  */
+
 class AppError {
 
     /**

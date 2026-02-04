@@ -1,15 +1,13 @@
 <?php
 
-/*
- * Autor: Alberto Méndez
- * Fecha de actualización: 03/02/2025
- */
-
 /**
  * Clase DepartamentoPDO
  *
  * Gestiona operaciones sobre la tabla T02_Departamento
  * mediante consultas a la base de datos usando DBPDO.
+ *
+ * @author Alberto Méndez
+ * @date   2025-02-03
  */
 
 require_once "DBPDO.php";

@@ -1,13 +1,12 @@
 <?php
-/*
- * Autor: Alberto Méndez
- * Fecha de actualización: 03/02/2025
- */
-
 /**
  * Clase NASA
  *
- * Representa un elemento para guardar la información de la foto del día de la  API de la NASA
+ * Representa un elemento para almacenar la información
+ * de la foto del día de la API de la NASA.
+ *
+ * @author Alberto Méndez
+ * @date   2025-02-03
  */
 class NASA {
     /**

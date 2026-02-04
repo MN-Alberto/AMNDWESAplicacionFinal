@@ -1,14 +1,12 @@
 <?php
 
-/*
- * Autor: Alberto Méndez
- * Fecha de actualización: 03/02/2025
- */
-
 /**
  * Clase Usuario
  *
  * Representa un usuario de la aplicación.
+ *
+ * @author Alberto Méndez
+ * @date   2025-02-03
  */
 class Usuario {
 
