@@ -37,6 +37,20 @@
         exit;
     }
 
+    if(isset($_REQUEST['bajaLogica'])){
+        $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['bajaLogica'];
+        DepartamentoPDO::bajaLogica($_SESSION['codDepartamentoEnCurso']);
+        header('Location: indexAplicacionFinal.php');
+        exit;
+    }
+
+    if(isset($_REQUEST['reactivarBaja'])){
+        $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['reactivarBaja'];
+        DepartamentoPDO::reactivarBaja($_SESSION['codDepartamentoEnCurso']);
+        header('Location: indexAplicacionFinal.php');
+        exit;
+    }
+
     if(isset($_REQUEST['eliminarDept'])){
         $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['eliminarDept'];
         $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
@@ -106,10 +120,10 @@
         $aDepartamentosArray[] = [
             'codDepartamento' => $dep->getCodDepartamento(),
             'descDepartamento' => $dep->getDescDepartamento(),
-            'fechaCreacion' => $dep->getFechaCreacionDepartamento()->format('d-m-Y'),
+            'fechaCreacion' => $dep->getFechaCreacionDepartamento()->format('d-m-Y H:i:s'),
             'volumenNegocio' => number_format($dep->getVolumenDeNegocio(), 2, ',', '.').'€',
             'fechaBaja' => $dep->getFechaBajaDepartamento() 
-                           ? $dep->getFechaBajaDepartamento()->format('d-m-Y') 
+                           ? $dep->getFechaBajaDepartamento()->format('d-m-Y H:i:s') 
                            : ''
         ];
     }

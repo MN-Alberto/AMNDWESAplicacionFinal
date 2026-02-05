@@ -640,7 +640,7 @@
             top: 300px;
             left: 600px;
         }
-        
+
         #tablaDatos{
             position: relative;
             width: 500px;
@@ -701,13 +701,13 @@
         }
 
         .tablaDept{
-            width: 1000px;
+            width: 1400px;
             height: 600px;
             margin-top: 60px;
         }
 
         .tablaDept table{
-            width: 1000px;
+            width: 1400px;
         }
 
         .tablaDept th{
@@ -719,13 +719,21 @@
         
         .tablaDept td{
             color: black;
-            background: #ffffff;
             border-collapse: collapse;
             border: 1px solid black;
+        }
+
+        #fOpciones{
+            width: 280px;
+        }
+
+        .tablaDept td:last-of-type{
+            width: 200px;
         }
         
         .tablaDept tr:nth-child(1){
             height: 40px;
+            font-size: 1.2rem;
         }
         
         #buscarDesc{
