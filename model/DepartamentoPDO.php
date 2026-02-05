@@ -156,5 +156,52 @@ public static function eliminarDepartamento(string $codDepartamento){
             return null;
         }
     }
+
+public static function añadirDepartamento(string $codDepartamento, string $descDepartamento, DateTime $fechaCreacion, float $volumenNegocio, ?DateTime $fechaBaja){
+
+    $query="INSERT INTO T02_Departamento VALUES (?, ?, ?, ?, ?)";
+
+    $parametros=[
+        $codDepartamento,
+        $descDepartamento,
+        $fechaCreacion->format('Y-m-d H:i:s'),
+        $volumenNegocio,
+        $fechaBaja ? $fechaBaja->format('Y-m-d H:i:s') : null
+    ];
+
+    $resultado=DBPDO::ejecutaConsulta($query, $parametros);
+
+    if(!$resultado){
+        return null;
+    }
+
+}
+
+public static function bajaLogica(string $codDepartamento){
+
+    $query="UPDATE T02_Departamento SET T02_FechaBajaDepartamento=NOW() WHERE T02_CodDepartamento=? AND T02_FechaBajaDepartamento IS NULL";
+
+    $parametros=[$codDepartamento];
+
+    $resultado=DBPDO::ejecutaConsulta($query, $parametros);
+
+    if(!$resultado){
+        return null;
+    }
+}
+
+public static function reactivarBaja(string $codDepartamento){
+
+    $query="UPDATE T02_Departamento SET T02_FechaBajaDepartamento=null WHERE T02_CodDepartamento=?";
+
+    $parametros=[$codDepartamento];
+
+    $resultado=DBPDO::ejecutaConsulta($query, $parametros);
+
+    if(!$resultado){
+        return null;
+    }
+}
+
 }
 ?>

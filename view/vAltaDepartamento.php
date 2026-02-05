@@ -11,21 +11,15 @@
         
         <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="fEditDept">
             <label for="codDept">Código:</label>
-            <input type="text" name="codDept" id="cDeptEditar" value="" disabled/>
+            <input type="text" name="codDept" id="cDeptEditar" value=""/>
             
             <label for="descDept">Descripción:</label>
-            <input type="text" name="descDept" id="dDeptEditar" value="" disabled/>
-
-            <label for="fCreacionDept">Fecha de Creación:</label>
-            <input type="text" name="fCreacionDept" id="fCreaDeptEditar" value="" disabled/>
+            <input type="text" name="descDept" id="dDeptEditar" value=""/>
             
             <label for="volumen">Volumen de Negocio:</label>
-            <input type="text" name="volumenNegocio" id="fCreaDeptEditar" value="" disabled/>
+            <input type="text" name="volumenNegocio" id="fCreaDeptEditar" value=""/>
 
-            <label for="fBajaDept">Fecha de Baja:</label>
-            <input type="text" name="fBajaDept" id="fBajaDeptEditar" value="" disabled/>
-
-            <button type="submit" name="confirmarEditar" id="btnConfEdit">Aceptar</button>
+            <button type="submit" name="confirmarAñadir" id="btnConfEdit">Aceptar</button>
            
         </form>
     </main>

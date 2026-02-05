@@ -57,10 +57,14 @@
             }
             ?>
             
+            <?php
+            if(!empty($aVista['fechaBaja'])){
+            ?>
             <label for="fBajaDept">Fecha de Baja:</label>
             <input type="text" name="fBajaDept" id="fBajaDeptEditar" value="<?php echo $aVista['fechaBaja']; ?>" disabled/>
-
             <?php
+            }
+
             if($_SESSION['paginaEnCurso']=="modificarDepartamento"){
             ?>
             <button type="submit" name="confirmarEditar" id="btnConfEdit">Aceptar</button>
