@@ -7,12 +7,17 @@
 
     <main id="mantenimientoDept">
         <h1><b>Mantenimiento de departamentos</b></h1>
+        <form action=<?php echo $_SERVER["PHP_SELF"];?> method="post" class="formAlta">
+            <button type="submit" name="añadir" id="botonAltaDept"></button>
+        </form>
+        
         <form action=<?php echo $_SERVER["PHP_SELF"];?> method="post" class="formDept">
         <label>Descripción:</label>
             <input type="text" name="descripcion" id="buscarDesc" value="<?php echo $aVista['descripcion']; ?>" placeholder="Introduce una descripción">
             <button type="submit" name="buscar" id="botonBuscarDesc"></button>
         <span style="color:red"></span>
         </form>
+        
 <!-- Si el array de departamentos contiene algo se muestra la tabla -->
         <?php
             if(!empty($aVista['aDepartamentos'])){
@@ -37,9 +42,10 @@
                         <td style="text-align: left;"><?= $dep['volumenNegocio'] ?></td>
                         <td><?= $dep['fechaBaja'] ?></td>
                         <td>
-                            <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="f1">
-                                <button type="submit" name="editarDept" id="botonEditarDept" value="<?php echo $dep['codDepartamento']; ?>"></button>
-                                <button type="submit" name="eliminarDept" id="botonEliminarDept" value="<?php echo $dep['codDepartamento']; ?>"></button>
+                            <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="fOpciones">
+                                <button type="submit" name="verDept" id="botonVerDept" value="<?php echo $dep['codDepartamento']; ?>">👁️</button>
+                                <button type="submit" name="editarDept" id="botonEditarDept" value="<?php echo $dep['codDepartamento']; ?>">✏️</button>
+                                <button type="submit" name="eliminarDept" id="botonEliminarDept" value="<?php echo $dep['codDepartamento']; ?>">🗑️</button>
                             </form>
                         </td>
                     </tr>

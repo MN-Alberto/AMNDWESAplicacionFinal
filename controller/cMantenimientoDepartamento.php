@@ -14,7 +14,7 @@
         exit;
     }
     
-    if(isset($_REQUEST['alta'])){
+    if(isset($_REQUEST['añadir'])){
         $_SESSION['paginaEnCurso']=$_SERVER['paginaAnterior'];
         $_SESSION['paginaEnCurso']='altaDepartamento';
         header('Location: indexAplicacionFinal.php');
@@ -25,6 +25,14 @@
         $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['editarDept'];
         $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
         $_SESSION['paginaEnCurso'] = 'modificarDepartamento';
+        header('Location: indexAplicacionFinal.php');
+        exit;
+    }
+    
+    if(isset($_REQUEST['verDept'])){
+        $_SESSION['codDepartamentoEnCurso'] = $_REQUEST['verDept'];
+        $_SESSION['paginaAnterior'] = $_SESSION['paginaEnCurso'];
+        $_SESSION['paginaEnCurso'] = 'verDepartamento';
         header('Location: indexAplicacionFinal.php');
         exit;
     }

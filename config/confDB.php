@@ -6,17 +6,16 @@
  * 
 
                 LOCAL
-
-
-                const RUTA = 'mysql:host=localhost;dbname=dbamndwesaplicacionfinal';
-                const USUARIO = 'root';
-                const PASS = '';
  */
+
+                const RUTA = 'mysql:host=daw207.local.ieslossauces.es;dbname=DBAMNDWESAplicacionFinal';
+                const USUARIO = 'userAMNDWESAplicacionFinal';
+                const PASS = 'paso';
+
            /*
             * EXPLOTACIÓN
- */
               const RUTA = 'mysql:host=localhost;dbname=DBAMNDWESAplicacionFinal';
               const USUARIO = 'userAMNDWESAplicacionFinal';
               const PASS = 'CD97ertvct$E';
-
+ */
 ?>
