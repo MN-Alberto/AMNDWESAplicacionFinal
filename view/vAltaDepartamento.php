@@ -6,6 +6,26 @@
 </header>
 
     <main id="mantenimientoDept">
-        <h1><b>Alta de departamentos</b></h1>
+        <h1><b>Alta de departamento</b></h1>
            
+        
+        <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="fEditDept">
+            <label for="codDept">Código:</label>
+            <input type="text" name="codDept" id="cDeptEditar" value="" disabled/>
+            
+            <label for="descDept">Descripción:</label>
+            <input type="text" name="descDept" id="dDeptEditar" value="" disabled/>
+
+            <label for="fCreacionDept">Fecha de Creación:</label>
+            <input type="text" name="fCreacionDept" id="fCreaDeptEditar" value="" disabled/>
+            
+            <label for="volumen">Volumen de Negocio:</label>
+            <input type="text" name="volumenNegocio" id="fCreaDeptEditar" value="" disabled/>
+
+            <label for="fBajaDept">Fecha de Baja:</label>
+            <input type="text" name="fBajaDept" id="fBajaDeptEditar" value="" disabled/>
+
+            <button type="submit" name="confirmarEditar" id="btnConfEdit">Aceptar</button>
+           
+        </form>
     </main>

@@ -285,7 +285,7 @@
         
         #botonAltaDept{
             background-image: url(./webroot/mas.png);
-            background-size: cover;
+            background-size: contain;
             border: none;
             background-repeat: no-repeat;
             width: 40px;
@@ -294,31 +294,30 @@
             transition: all 0.5s ease;
             background-color: transparent;
             margin-right: 10px;
+            position: relative;
+            left: 360px;
+            top: 70px;
         }
         
         #botonEditarDept{
-            background-image: url(./webroot/lapiz.png);
-            background-size: cover;
-            border: none;
-            background-repeat: no-repeat;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            transition: all 0.5s ease;
             background-color: transparent;
-            margin-right: 10px;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        #botonVerDept{
+            background-color: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
         
         #botonEliminarDept{
-            background-image: url(./webroot/papelera.png);
-            background-size: cover;
-            border: none;
-            background-repeat: no-repeat;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            transition: all 0.5s ease;
             background-color: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         #Login{
