@@ -11,7 +11,7 @@
         header("Location: indexAplicacionFinal.php");
         exit;
     }
-    
+   /* 
     require_once './model/Usuario.php';
     require_once './model/UsuarioPDO.php';
     
@@ -87,6 +87,8 @@
         'aErrores' => $aErrores,
         'aUsuarios' => $aUsuariosArray
     ];
+    */
+    
     
     require_once $view['Layout'];
 ?>

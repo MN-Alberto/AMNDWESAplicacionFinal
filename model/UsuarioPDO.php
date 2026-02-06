@@ -178,5 +178,19 @@
 
             return DBPDO::ejecutaConsulta($query, $parametros);
         }
+        
+        public static function eliminarUsuario(string $codUsuario) {
+            
+            $query="DELETE FROM T01_Usuario WHERE T01_CodUsuario= ?";
+    
+            $parametros=[$codUsuario];
+
+            $resultado= DBPDO::ejecutaConsulta($query, $parametros);
+
+            //si el resultado esta vacio significa que no se ha borrado nada o que algo ha ido mal
+            if(!$resultado){
+                return null;
+            }
+        }
     }
 ?>

@@ -34,6 +34,24 @@
             margin-top: 40px;
         }
         
+        .eliminarUser{
+            position: relative;
+            left: -260px;
+            top: 280px;
+        }
+        
+        #eliminarUser{
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        #eliminarUser:hover{
+            scale:1 !important;
+            cursor: pointer;
+        }
+        
         #h1Publico{
             margin-right: 450px;
         }
@@ -769,6 +787,7 @@
 
         .formUsers {
             display: flex;
+            justify-content: center;
             align-items: center;
             gap: 10px;
             margin-top: 40px;
