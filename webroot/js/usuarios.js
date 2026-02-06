@@ -2,8 +2,9 @@ window.onload = function () {
   cargarUsuarios();
   const descripcion = document.getElementById("buscarDesc");
   descripcion.addEventListener("input", function (e) {
+    var descripcionBuscada=descripcion.value.trim();
     e.preventDefault();
-    cargarUsuarios(descripcion.value.trim());
+    cargarUsuarios(descripcionBuscada);
   });
 };
  
@@ -16,9 +17,11 @@ function cargarUsuarios(descripcion = "") {
   fetch(url)
     .then((response) => response.json())
     .then((listaUsuarios) => {
+        
       const cuerpoTabla = document.querySelector(".tablaUsers tbody");
       cuerpoTabla.innerHTML = "";
-      if (listaUsuarios!=[]) {
+      
+      if (listaUsuarios.length>0) {
         listaUsuarios.forEach((usuario) => {
           cuerpoTabla.innerHTML += `
             <tr>
@@ -27,11 +30,17 @@ function cargarUsuarios(descripcion = "") {
             <td>${usuario.numConexiones}</td>
             <td>${usuario.ultimaConexion ?? ""}</td>
             <td>${usuario.perfil}</td>
+            <td>
+                <button type="submit" name="verUser" id="botonVerUser" value="${usuario.codigoUsuario}">👁️</button>
+                <button type="submit" name="eliminarU" id="botonEliminarU" value="${usuario.codigoUsuario}">🗑️</button>
+            </td>
             </tr>
           `;
         });
-      } else {
-        cuerpoTabla.innerHTML = `<td>No hay resultados que coincidan con la busqueda</td>`;
+      } 
+      
+      else {
+        cuerpoTabla.innerHTML = `<td>No hay usuarios con esa descripción</td>`;
       }
-    });
+    });  
 }

@@ -36,7 +36,7 @@
 <!-- Recorremos todos los departamentos que haya devuelto la consulta y mostramos los datos de cada uno -->
                 <?php foreach ($aVista['aDepartamentos'] as $dep): ?>
 
-                    <tr <?php if (!empty($dep['fechaBaja'])) { echo 'style="background: lightgray"'; } else{echo 'style="background: white"';} ?>>
+                    <tr <?php if (!empty($dep['fechaBaja'])) { echo 'style="background: #ffe6e6"'; } else{echo 'style="background: white"';} ?>>
                         <td><?= $dep['codDepartamento'] ?></td>
                         <td style="text-align: left;"><?= $dep['descDepartamento'] ?></td>
                         <td><?= $dep['fechaCreacion'] ?></td>
@@ -46,8 +46,18 @@
                             <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="fOpciones">
                                 <button type="submit" name="verDept" id="botonVerDept" value="<?php echo $dep['codDepartamento']; ?>">👁️</button>
                                 <button type="submit" name="editarDept" id="botonEditarDept" value="<?php echo $dep['codDepartamento']; ?>">✏️</button>
-                                <button type="submit" name="bajaLogica" id="botonEditarDept" value="<?php echo $dep['codDepartamento']; ?>">⏸️</button>
-                                <button type="submit" name="reactivarBaja" id="botonEditarDept" value="<?php echo $dep['codDepartamento']; ?>">▶️</button>
+                                <?php
+                                    if(empty($dep['fechaBaja'])){
+                                ?>  
+                                    <button type="submit" name="bajaLogica" id="botonEditarDept" value="<?php echo $dep['codDepartamento']; ?>">⬇️</button>      
+                                <?php
+                                    }
+                                    else{
+                                ?>
+                                    <button type="submit" name="reactivarBaja" id="botonEditarDept" value="<?php echo $dep['codDepartamento']; ?>">⬆️</button>     
+                                <?php
+                                    }
+                                ?>
                                 <button type="submit" name="eliminarDept" id="botonEliminarDept" value="<?php echo $dep['codDepartamento']; ?>">🗑️</button>
                             </form>
                         </td>
