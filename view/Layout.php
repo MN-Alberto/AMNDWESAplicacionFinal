@@ -324,6 +324,20 @@
             cursor: pointer;
         }
         
+        #botonEliminarU{
+            background-color: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        #botonVerUser{
+            background-color: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
         #botonVerDept{
             background-color: transparent;
             border: none;
@@ -796,21 +810,19 @@
 
 
         .tablaUsers {
+            width: 1000px;
             display: flex;
             justify-content: center;
         }
 
         .tablaUsers table {
+            width: 1000px;
             border-collapse: collapse;
-            width: auto; 
-            table-layout: auto;
         }
 
         .tablaUsers th,
         .tablaUsers td {
-            padding: 8px 12px;
             text-align: center;
-            white-space: nowrap;
             border: 1px solid #ccc;
         }
 

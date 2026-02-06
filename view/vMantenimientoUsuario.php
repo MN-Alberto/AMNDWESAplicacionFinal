@@ -10,7 +10,6 @@
         <form action=<?php echo $_SERVER["PHP_SELF"];?> method="post" class="formUsers">
         <label>Descripción:</label>
             <input type="text" name="descripcion" id="buscarDesc" value="" placeholder="Introduce una descripción">
-            <button type="submit" name="buscar" id="botonBuscarDesc"></button>
         <span style="color:red"></span>
         </form>
 
@@ -23,6 +22,7 @@
                     <th>Nº Conexiones</th>
                     <th>Última Conexión</th>
                     <th>Perfil</th>
+                    <th>Opciones</th>
                 </tr>
                 </thead>
                 

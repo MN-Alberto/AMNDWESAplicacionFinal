@@ -179,6 +179,13 @@
             return DBPDO::ejecutaConsulta($query, $parametros);
         }
         
+        
+        /**
+         * Elimina un usuario
+         *
+         * @param string $codUsuario Código del usuario a eliminar
+         */
+        
         public static function eliminarUsuario(string $codUsuario) {
             
             $query="DELETE FROM T01_Usuario WHERE T01_CodUsuario= ?";
