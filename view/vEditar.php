@@ -13,6 +13,11 @@
         <div class="contenidoEditar">
             <div class="formularioEditar">
                 <div id="foto"><img src="http://picsum.photos/id/100/200/200"/></div>
+                <div class="eliminarUser">
+                    <form action=<?php echo $_SERVER["PHP_SELF"];?> method="post" id="eliminar">
+                        <button type="submit" name="eliminarUser" id="eliminarUser">ELIMINAR USUARIO</button>
+                    </form>
+                </div>
                 <div id="formDatos">
                     <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="formDatos">
                         <table id="tablaDatos">

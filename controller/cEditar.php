@@ -12,6 +12,13 @@
         header("Location: indexAplicacionFinal.php");
         exit;
     }
+    
+    if(isset($_REQUEST['eliminarUser'])){
+        UsuarioPDO::eliminarUsuario($_SESSION['userAMNDWESAplicacionFinal']->getCodUsuario());
+        $_SESSION['paginaEnCurso']='inicioPublico';
+        header("Location: indexAplicacionFinal.php");
+        exit;
+    }
 
     //variable que comprueba si la entrada de los datos es correcta
     $entradaOK=true;

@@ -59,6 +59,9 @@
         if($_REQUEST['volumenNegocio']<0){
             $aRespuestas['volumenNegocio']= 0;
         }
+        if($_REQUEST['volumenNegocio']>10000){
+            $aRespuestas['volumenNegocio']= 10000;
+        }
         else{
             $aRespuestas['volumenNegocio']= (float) $_REQUEST['volumenNegocio'];
         }

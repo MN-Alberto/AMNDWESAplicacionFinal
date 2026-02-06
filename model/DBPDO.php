@@ -1,5 +1,5 @@
 <?php
-require_once "./config/confDB.php";
+require_once __DIR__ . '/../config/confDB.php';
 require_once 'AppError.php';
 
 /**
