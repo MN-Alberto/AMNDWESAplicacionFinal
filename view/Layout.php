@@ -539,14 +539,23 @@
             transition: all 0.3s ease;
         }
 
+        #foto4{
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        #foto4:hover{
+            scale: 1.30;
+        }
+
         .botonesCarrusel{
             position: absolute;
             top: 620px;
-            left: 420px;
+            left: 380px;
             /* display: flex;
             flex-direction: row; */
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
         }
 
         .botonesCarrusel div{
@@ -576,6 +585,15 @@
         }
 
         .boton3{
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            background: wheat;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .boton4{
             border-radius: 50%;
             width: 45px;
             height: 45px;
