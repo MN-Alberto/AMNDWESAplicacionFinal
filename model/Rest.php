@@ -87,14 +87,24 @@ class Rest {
         return $datos;
     }
     
+    
+    /**
+     * Obtiene información de un servidor de Minecraft concreto
+     *
+     * @return array|null Devuelve un array con los datos de la API o null si da error
+     */
     public static function apiServerInfo(){
-        $url='http://api.mcsrvstat.us/2/play.hypixel.net';
+        //$url='https://api.mcsrvstat.us/2/play.hypixel.net';
+        $url='https://api.mcsrvstat.us/2/play.cubecraft.net';
+        //$url='https://api.mcsrvstat.us/2/mcs.gg';
         
         $ch = curl_init($url);
         
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         
         curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+        
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36');
         
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
@@ -107,7 +117,6 @@ class Rest {
         }
         
         curl_close($ch);
-        
         
         $datos = json_decode($respuesta, true);
         

@@ -2,6 +2,7 @@
 
     require_once './model/Rest.php';
     require_once './model/NASA.php';
+    require_once './model/HYPIXEL.php';
 
     if(isset($_REQUEST["Volver"])){
         $_SESSION["paginaAnterior"]=$_SESSION["paginaEnCurso"];
@@ -101,7 +102,13 @@
                 
                 
                 if($datos){
-                    $respuestaServidor=new HYPIXEL($datos['ip'], $datos['online'], $datos['players']['online'], $datos['players']['max'], $datos['version'], $datos['icon']);
+                    $respuestaServidor = new HYPIXEL(
+                            $datos['ip'] ?? 'Desconocida',             
+                            $datos['online'] ?? false,                   
+                            $datos['players']['online'] ?? 0,                 
+                            $datos['players']['max'] ?? 0,             
+                            $datos['version'] ?? 'Desconocida', 
+                            $datos['icon'] ?? null);
                     return $respuestaServidor;
                 }
                 
