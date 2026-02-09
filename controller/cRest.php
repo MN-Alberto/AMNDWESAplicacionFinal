@@ -79,14 +79,64 @@
                 header("Location: indexAplicacionFinal.php");
                 exit;
         }
-
-        $aVista=[
+        
+        
+        if($oNasa){
+          $aVista=[
           "titulo" => $oNasa['normal']->getTitulo(),
           "foto" => $oNasa['normal']->getFoto(),
           "fotoHD" => $oNasa['hd']->getFoto(),
           "fecha" => $fecha,
           "descripcion" => $oNasa['normal']->getDescripcion()
-        ];
+        ];   
+        }
+        
+        else{
+            $oNasa=null;
+        }
+        
+        class datosServidor{
+            public static function mostrarDatos() {
+                $datos= Rest::apiServerInfo();
+                
+                
+                if($datos){
+                    $respuestaServidor=new HYPIXEL($datos['ip'], $datos['online'], $datos['players']['online'], $datos['players']['max'], $datos['version'], $datos['icon']);
+                    return $respuestaServidor;
+                }
+                
+                return null; 
+            }
+        }
+        
+        $oDatos=null;
+        
+        $oDatos= datosServidor::mostrarDatos();
+        
+        if($oDatos){
+            $_SESSION['hypixel']=[
+              'ip' => $oDatos->getIp(),
+              'online' => $oDatos->getOnline(),
+              'numJugadores' => $oDatos->getNumJugadoresActuales(),
+              'numJugadoresMaximos' => $oDatos->getNumJugadoresMaximos(),
+              'version' => $oDatos->getVersion(),
+              'icono' => $oDatos->getIcono()
+            ];
+        }
+        
+        if($oDatos){
+            $aVistaDatos=[
+              'ip' => $oDatos->getIp(),
+              'online' => $oDatos->getOnline(),
+              'numJugadores' => $oDatos->getNumJugadoresActuales(),
+              'numJugadoresMaximos' => $oDatos->getNumJugadoresMaximos(),
+              'version' => $oDatos->getVersion(),
+              'icono' => $oDatos->getIcono()
+            ];
+        }
+        else {
+            $oDatos=null;
+        }
 
         require_once $view["Layout"]; //llamada a la vista
 ?>

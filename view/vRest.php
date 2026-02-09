@@ -19,10 +19,11 @@
                         <input type="submit" name="enviar" id="enviar" class="botones" value="Enviar"/>
                 </form>
             </td>
-            <td><h3>AEMET</h3></td>
+            <td><h3>HYPIXEL</h3></td>
             <td><h3>PROPIA</h3></td>
         </tr>
         <tr>
+            
             <td>
                 <?php 
                     if ($oNasa){
@@ -48,7 +49,31 @@
                     <input type="submit" name="detalleFoto" id="detalleFoto" value="Ver Foto"/>
                 </form>
             </td>
-            <td></td>
+            
+            
+            <td>
+                
+                <?php
+                    if($oDatos){
+                ?>  
+                <img src="<?php echo $aVistaDatos['icono']; ?>" alt="Icono del Servidor"/>
+                <h2>IP del Servidor: <?php echo $aVistaDatos['ip']; ?></h2>
+                <h2>Estado del Servidor: <?php echo $aVistaDatos['online']; ?></h2>
+                <h2>Número de jugadores actuales: <?php echo $aVistaDatos['numJugadores']; ?></h2>
+                <h2>Número máximo de jugadores: <?php echo $aVistaDatos['numJugadoresMaximos']; ?></h2>
+                <h2>Versión de Minecraft: <?php echo $aVistaDatos['version']; ?></h2>
+                
+                <?php
+                    }
+                    else{
+                ?> 
+                <h2>No se han podido obtener los datos</h2>
+                <p>Asegurese que el servidor está en línea</p>
+                <?php    
+                    }
+                ?>
+                
+            </td>
             <td></td>
         </tr>
     </table>

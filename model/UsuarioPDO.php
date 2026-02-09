@@ -31,7 +31,7 @@
             if(empty($col)){
                 return null;
             }
-            
+
             $fechaUltimaConexionAnterior = isset($col["T01_FechaHoraUltimaConexion"]) 
             ? new DateTime($col["T01_FechaHoraUltimaConexion"]) 
             : null;
@@ -46,6 +46,7 @@
                $col["T01_ImagenUsuario"],
                $fechaUltimaConexionAnterior
             );
+            
             return $usuario;
         }
 
@@ -59,7 +60,8 @@
         public static function actualizarUltimaConexion(string $codUsuario) {
             
             $query = "UPDATE T01_Usuario
-                      SET T01_NumConexiones = T01_NumConexiones + 1
+                      SET T01_NumConexiones = T01_NumConexiones + 1,
+                      T01_FechaHoraUltimaConexion = NOW()
                       WHERE T01_CodUsuario = ?";
 
             DBPDO::ejecutaConsulta($query, [$codUsuario]);

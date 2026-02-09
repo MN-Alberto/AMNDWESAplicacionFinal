@@ -33,7 +33,7 @@ class Usuario {
     /**
      * @var DateTime Fecha y hora de la última conexión
      */
-    private DateTime $fechaHoraUltimaConexion;
+    private ?DateTime $fechaHoraUltimaConexion;
 
     /**
      * @var DateTime|null Fecha y hora de la conexión anterior
