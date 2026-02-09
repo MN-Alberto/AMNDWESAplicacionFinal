@@ -86,5 +86,36 @@ class Rest {
         //devolvemos los datos obtenidos de la petición a la API
         return $datos;
     }
+    
+    public static function apiServerInfo(){
+        $url='http://api.mcsrvstat.us/2/play.hypixel.net';
+        
+        $ch = curl_init($url);
+        
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        
+        curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+        
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        
+        $respuesta = curl_exec($ch);
+        
+        if ($respuesta === false) {
+            curl_close($ch);
+            return null;
+        }
+        
+        curl_close($ch);
+        
+        
+        $datos = json_decode($respuesta, true);
+        
+        if (!is_array($datos) || isset($datos['error'])) {
+            return null;
+        }
+        
+        return $datos;
+    }
 }
 ?>

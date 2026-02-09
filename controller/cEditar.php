@@ -14,8 +14,8 @@
     }
     
     if(isset($_REQUEST['eliminarUser'])){
-        UsuarioPDO::eliminarUsuario($_SESSION['userAMNDWESAplicacionFinal']->getCodUsuario());
-        $_SESSION['paginaEnCurso']='inicioPublico';
+        $_SESSION["paginaEnCurso"]=$_SESSION['paginaAnterior'];
+        $_SESSION['paginaEnCurso']='preguntaEliminarUsuario';
         header("Location: indexAplicacionFinal.php");
         exit;
     }

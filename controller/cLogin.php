@@ -53,7 +53,7 @@
         $usuario = UsuarioPDO::validarUsuario($codUsuario, $password);
 
         if ($usuario) {
-            $usuario->setFechaHoraUltimaConexionAnterior($usuario->getFechaHoraUltimaConexion());
+            // $usuario->setFechaHoraUltimaConexionAnterior($usuario->getFechaHoraUltimaConexion());
             UsuarioPDO::actualizarUltimaConexion($usuario->getCodUsuario());
 
             $_SESSION['userAMNDWESAplicacionFinal'] = $usuario;
