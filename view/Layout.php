@@ -34,6 +34,11 @@
             margin-top: 40px;
         }
         
+        #imagenIcon{
+            width: 100px;
+            height: 100px;
+        }
+        
         .eliminarUser{
             position: relative;
             left: -260px;
@@ -293,12 +298,6 @@
             background-color: transparent;
             margin-right: 10px;
             margin-left: 20px;
-        }
-        
-        #formDept{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
         }
         
         #botonAltaDept{
@@ -795,12 +794,13 @@
         .formDept{
             border: 1px solid black;
             width: 600px;
-            height: 150px;
+            height: 280px;
             background-color: #3c3c3c;
             border-radius: 10px;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
             align-items: center;
         }
       
@@ -934,6 +934,23 @@
             scale: 1.10 !important;
         }
         
+        .checks{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .checks label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .checks input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            margin: 0; 
+        }
     </style>
 
 

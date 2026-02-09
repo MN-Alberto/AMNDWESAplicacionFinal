@@ -55,13 +55,17 @@
                 
                 <?php
                     if($oDatos){
+                        if($aVistaDatos['icono']){
+                ?>
+                    <img src="<?php echo $aVistaDatos['icono']; ?>" id="imagenIcon" alt="Icono del Servidor"/>
+                <?php
+                        }
                 ?>  
-                <img src="<?php echo $aVistaDatos['icono']; ?>" alt="Icono del Servidor"/>
-                <h2>IP del Servidor: <?php echo $aVistaDatos['ip']; ?></h2>
-                <h2>Estado del Servidor: <?php echo $aVistaDatos['online']; ?></h2>
-                <h2>Número de jugadores actuales: <?php echo $aVistaDatos['numJugadores']; ?></h2>
-                <h2>Número máximo de jugadores: <?php echo $aVistaDatos['numJugadoresMaximos']; ?></h2>
-                <h2>Versión de Minecraft: <?php echo $aVistaDatos['version']; ?></h2>
+                <h2>IP del Servidor: <p><?php echo $aVistaDatos['ip']; ?></p></h2>
+                <h2>Estado del Servidor: <p><?php if($aVistaDatos['online']){echo 'Online'; } else{echo 'Offline';} ?></p></h2>
+                <h2>Número de jugadores actuales: <p><?php echo $aVistaDatos['numJugadores']; ?></p></h2>
+                <h2>Número máximo de jugadores: <p><?php echo $aVistaDatos['numJugadoresMaximos']; ?></p></h2>
+                <h2>Versión de Minecraft: <p><?php echo $aVistaDatos['version']; ?></p></h2>
                 
                 <?php
                     }

@@ -16,6 +16,18 @@
             <input type="text" name="descripcion" id="buscarDesc" value="<?php echo $aVista['descripcion']; ?>" placeholder="Introduce una descripción">
             <button type="submit" name="buscar" id="botonBuscarDesc"></button>
         <span style="color:red"></span>
+        
+        <div class="checks">
+            <label>
+                Activo
+                <input type="radio" name="estado" value="Activo" checked>
+            </label>
+
+            <label>
+                Inactivo
+                <input type="radio" name="estado" value="Inactivo">
+            </label>
+        </div>
         </form>
         
 <!-- Si el array de departamentos contiene algo se muestra la tabla -->
