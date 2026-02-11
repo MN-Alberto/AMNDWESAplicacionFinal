@@ -48,8 +48,8 @@
             $fecha = $formatoFecha->format($fechaUltimaConexion);
             $hora = $fechaUltimaConexion->format('H:i');
 
-            echo "<p>Esta es la vez numero " . $avInicioPrivado['numConexiones'] . " que se conecta.</p>";
-            echo "<p>Usted se conecto por ultima vez el</p>";
+            echo "<p>Esta es la vez número " . $avInicioPrivado['numConexiones'] . " que se conecta.</p>";
+            echo "<p>Usted se conectó por última vez el</p>";
             echo "<p>".$fecha . " a las " . $hora."</p>";
         }
         ?>

@@ -61,7 +61,7 @@
             
             $query = "UPDATE T01_Usuario
                       SET T01_NumConexiones = T01_NumConexiones + 1,
-                      T01_FechaHoraUltimaConexion = NOW()
+                      T01_FechaHoraUltimaConexion = CONVERT_TZ(NOW(), 'UTC', 'Europe/Madrid')
                       WHERE T01_CodUsuario = ?";
 
             DBPDO::ejecutaConsulta($query, [$codUsuario]);

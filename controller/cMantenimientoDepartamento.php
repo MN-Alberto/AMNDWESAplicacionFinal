@@ -71,9 +71,11 @@
         //variable que almacena la descripcion buscada
         // el trim es para que si no se envia ningun valor o solo hay espacios la descripcion será "".
         $descripcion = trim($_REQUEST['descripcion'] ?? "");
+        $estado = $_REQUEST['estado'] ?? "Activo";
         
         //se almacena en la sesion la descripcion buscada para volver a ponerla cuando volvamos a entrar al mantenimiento
         $_SESSION['buscado']=$_REQUEST['descripcion'];
+        $_SESSION['estadoBuscado'] = $_REQUEST['estado'];
 
         //comprobamos la descripcion con la libreria de validacion de formularios
         $aErrores['descripcion']=validacionFormularios::comprobarAlfabetico($descripcion, 255, 0, 0);
@@ -88,14 +90,16 @@
     //si no se busca
     else {
         //si existe en la sesion la descripcion buscada
-            if(isset($_SESSION['buscado'])){
+            if(isset($_SESSION['buscado']) || isset($_SESSION['estadoBuscado'])){
                 //inicializamos la descripcion al valor que se busco anteriormente
                 $descripcion=$_SESSION['buscado'];
+                $estado=$_SESSION['estadoBuscado'];
             }
             //si no existe, significa que no hay nada buscado anteriormente o ha sido borrado
             else{
                 //inicializamos a "" para asi mostrar todos los departamentos
-                $descripcion = "";   
+                $descripcion = "";
+                $estado="Activo";
             }
     }
     
@@ -104,14 +108,17 @@
 
     //si la entrada es OK buscamos departamentos por desacripcion
     if ($entradaOK) {
-        $aDepartamentos = DepartamentoPDO::buscarDepartamentoPorDescripcion($descripcion);
+        //$aDepartamentos = DepartamentoPDO::buscarDepartamentoPorDescripcion($descripcion);
+        $aDepartamentos = DepartamentoPDO::buscarDepartamentoPorDescripcionYEstado($descripcion, $estado);
     } 
     
     //si no, cambiamos la descripcion a "" para limpiar busquedas anteriores
     // y buscamos de nuevo para mostrar todos
     else {
         $descripcion = "";
-        $aDepartamentos = DepartamentoPDO::buscarDepartamentoPorDescripcion($descripcion);
+        $estado="Activo";
+        //$aDepartamentos = DepartamentoPDO::buscarDepartamentoPorDescripcion($descripcion);
+        $aDepartamentos = DepartamentoPDO::buscarDepartamentoPorDescripcionYEstado($descripcion, $estado);
     }
     
     //recorremos el array de departamentos y creamos un array
@@ -132,6 +139,7 @@
     $aVista=[
         'descripcion' => $descripcion,
         'aErrores' => $aErrores,
+        'estado' => $estado,
         'aDepartamentos' => $aDepartamentosArray
     ];
 

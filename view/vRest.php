@@ -44,10 +44,15 @@
                     <p>No se pudo obtener la foto del día.</p>
                 <?php
                     }
+                    if ($oNasa){
                 ?>
                 <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="formDetalleFoto">
                     <input type="submit" name="detalleFoto" id="detalleFoto" value="Ver Foto"/>
                 </form>
+                    
+                <?php
+                    }
+                ?>
             </td>
             
             

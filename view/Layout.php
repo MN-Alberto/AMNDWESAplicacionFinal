@@ -79,7 +79,9 @@
             width: 1000px;
             margin: 30px auto;
             padding: 20px;
-            height: 620px;
+            /*height: 620px;
+            */
+            min-height: 620px;
             color: white;
             margin-top: 150px;
         }
@@ -321,9 +323,10 @@
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
         
-        #botonEliminarU{
+        #botonEditarUser{
             background-color: transparent;
             border: none;
             font-size: 1.5rem;
@@ -342,6 +345,7 @@
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
         
         #botonEliminarDept{
@@ -349,6 +353,15 @@
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        #botonEliminarU{
+            background-color: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         #Login{
@@ -751,7 +764,9 @@
 
         .tablaDept{
             width: 1400px;
-            height: 600px;
+            /*height: 600px;
+            */
+            min-height: 600px;
             margin-top: 60px;
         }
 
@@ -794,7 +809,7 @@
         .formDept{
             border: 1px solid black;
             width: 600px;
-            height: 280px;
+            height: 100px;
             background-color: #3c3c3c;
             border-radius: 10px;
             padding: 20px;
@@ -815,6 +830,14 @@
         #mantenimientoUsers h1 {
             text-align: center;
         }
+        
+        #botonVerUser{
+            transition: all 0.3s ease;
+        }
+        
+        #botonEditarUser{
+            transition: all 0.3s ease;
+        }
 
 
         .formUsers {
@@ -831,6 +854,7 @@
             width: 1000px;
             display: flex;
             justify-content: center;
+            margin-bottom: 50px;
         }
 
         .tablaUsers table {
