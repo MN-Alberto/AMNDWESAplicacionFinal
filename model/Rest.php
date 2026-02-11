@@ -94,8 +94,8 @@ class Rest {
      * @return array|null Devuelve un array con los datos de la API o null si da error
      */
     public static function apiServerInfo(){
-        //$url='https://api.mcsrvstat.us/2/play.hypixel.net';
-        $url='https://api.mcsrvstat.us/2/play.cubecraft.net';
+        $url='https://api.mcsrvstat.us/2/play.hypixel.net';
+        //$url='https://api.mcsrvstat.us/2/play.cubecraft.net';
         //$url='https://api.mcsrvstat.us/2/mcs.gg';
         
         $ch = curl_init($url);

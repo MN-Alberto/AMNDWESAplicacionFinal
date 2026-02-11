@@ -214,11 +214,9 @@ public static function buscarDepartamentoPorDescripcionYEstado(string $descDepar
     
     $resultado=DBPDO::ejecutaConsultaMultiple($query,["%$descDepartamento%"]);
     
-    if(!$resultado){
-        return null;
-    }
-    
     $aDepartamentos = []; //Array que contendra los departamentos
+    
+    if($resultado){
 
     //Por cada resultado crearemos un nuevo Departamento y lo añadiremos al array de departamentos
     foreach ($resultado as $col) {
@@ -241,6 +239,7 @@ public static function buscarDepartamentoPorDescripcionYEstado(string $descDepar
             (float) $col["T02_VolumenDeNegocio"],
             $fechaBaja
         );
+    }
     }
 
     //devolvemos el array con los departamentos que devuelva, pueden ser 1 o varios

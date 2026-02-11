@@ -1,10 +1,22 @@
 window.onload = function () {
-  cargarUsuarios();
   const descripcion = document.getElementById("buscarDesc");
+  const busquedaGuardada = localStorage.getItem("ultimaBusqueda");
+  
+  if (busquedaGuardada) {
+    descripcion.value = busquedaGuardada;
+    cargarUsuarios(busquedaGuardada);
+  } 
+  else {
+    cargarUsuarios();
+  }
+
   descripcion.addEventListener("input", function (e) {
-    var descripcionBuscada=descripcion.value.trim();
     e.preventDefault();
+    const descripcionBuscada = descripcion.value.trim();
+    
     cargarUsuarios(descripcionBuscada);
+
+    localStorage.setItem("ultimaBusqueda", descripcionBuscada);
   });
 };
  

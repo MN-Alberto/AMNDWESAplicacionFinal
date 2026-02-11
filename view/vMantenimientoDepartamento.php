@@ -20,12 +20,12 @@
         <div class="checks">
             <label>
                 Activo
-                <input type="radio" name="estado" value="Activo" checked>
+                <input type="radio" name="estado" value="Activo" <?php if($aVista['estado']=="Activo"){echo "checked";} ?>>
             </label>
 
             <label>
                 Inactivo
-                <input type="radio" name="estado" value="Inactivo">
+                <input type="radio" name="estado" value="Inactivo" <?php if($aVista['estado']=="Inactivo"){echo "checked";} ?>>
             </label>
         </div>
         </form>

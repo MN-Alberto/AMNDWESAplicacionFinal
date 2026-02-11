@@ -9,6 +9,7 @@
     require_once ("./config/confDB.php"); //Incluimos el fichero de configuración de la BD.
     require_once "./model/Usuario.php";
 
+    date_default_timezone_set('Europe/Madrid');
     session_start(); //Iniciamos o recuperamos la sesión.
     
     

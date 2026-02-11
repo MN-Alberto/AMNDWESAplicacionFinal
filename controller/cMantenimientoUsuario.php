@@ -11,6 +11,7 @@
         header("Location: indexAplicacionFinal.php");
         exit;
     }
+    
    /* 
     require_once './model/Usuario.php';
     require_once './model/UsuarioPDO.php';
