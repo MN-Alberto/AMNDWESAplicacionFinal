@@ -155,5 +155,11 @@ class Usuario {
     public function setDescUsuario($descUsuario) {
         $this->descUsuario = $descUsuario;
     }
+    
+    public function setNumConexiones(int $numConexiones): void {
+        $this->numConexiones = $numConexiones;
+    }
+
+
 }
 ?>

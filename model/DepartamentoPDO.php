@@ -157,6 +157,17 @@ public static function eliminarDepartamento(string $codDepartamento){
         }
     }
 
+    
+  /**
+ * Añade un nuevo departamento a la base de datos.
+ *
+ * @param string $codDepartamento Código del departamento
+ * @param string $descDepartamento Descripción del departamento
+ * @param DateTime $fechaCreacion Fecha de creación del departamento
+ * @param float $volumenNegocio Volumen de negocio del departamento
+ * @param DateTime|null $fechaBaja Fecha de baja del departamento (opcional)
+ * @return void|null Devuelve null si hubo un error al insertar
+ */
 public static function añadirDepartamento(string $codDepartamento, string $descDepartamento, DateTime $fechaCreacion, float $volumenNegocio, ?DateTime $fechaBaja){
 
     $query="INSERT INTO T02_Departamento VALUES (?, ?, ?, ?, ?)";
@@ -177,6 +188,15 @@ public static function añadirDepartamento(string $codDepartamento, string $desc
 
 }
 
+
+/**
+ * Realiza la baja lógica de un departamento.
+ *
+ * Marca el departamento como inactivo estableciendo la fecha de baja a la fecha actual.
+ *
+ * @param string $codDepartamento Código del departamento a dar de baja
+ * @return void|null Devuelve null si hubo un error al actualizar
+ */
 public static function bajaLogica(string $codDepartamento){
 
     $query="UPDATE T02_Departamento SET T02_FechaBajaDepartamento=NOW() WHERE T02_CodDepartamento=? AND T02_FechaBajaDepartamento IS NULL";
@@ -190,6 +210,15 @@ public static function bajaLogica(string $codDepartamento){
     }
 }
 
+
+/**
+ * Reactiva un departamento dado de baja.
+ *
+ * Establece la fecha de baja del departamento a NULL, dejándolo activo.
+ *
+ * @param string $codDepartamento Código del departamento a reactivar
+ * @return void|null Devuelve null si hubo un error al actualizar
+ */
 public static function reactivarBaja(string $codDepartamento){
 
     $query="UPDATE T02_Departamento SET T02_FechaBajaDepartamento=null WHERE T02_CodDepartamento=?";
@@ -203,6 +232,14 @@ public static function reactivarBaja(string $codDepartamento){
     }
 }
 
+
+/**
+ * Busca departamentos filtrando por descripción y estado.
+ *
+ * @param string $descDepartamento Texto parcial de la descripción a buscar
+ * @param string|null $estadoDepartamento "Activo" o "Inactivo" para filtrar por estado, null para todos
+ * @return Departamento[] Array de objetos Departamento que cumplen el filtro
+ */
 public static function buscarDepartamentoPorDescripcionYEstado(string $descDepartamento, ?string $estadoDepartamento){
     
     if($estadoDepartamento=="Inactivo"){
@@ -246,6 +283,5 @@ public static function buscarDepartamentoPorDescripcionYEstado(string $descDepar
     // depende de lo que haya devuelto la consulta y si filtramos por descripcion o no
     return $aDepartamentos;
 }
-
 }
 ?>

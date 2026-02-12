@@ -74,7 +74,7 @@
         header("Location: indexAplicacionFinal.php");
         exit;
     }
-
+    
     //datos para la vista
     $descripcion=$_SESSION['userAMNDWESAplicacionFinal']->getDescUsuario();
     $nomUsuario=$_SESSION['userAMNDWESAplicacionFinal']->getCodUsuario();

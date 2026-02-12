@@ -53,10 +53,16 @@
         $usuario = UsuarioPDO::validarUsuario($codUsuario, $password);
 
         if ($usuario) {
-            // $usuario->setFechaHoraUltimaConexionAnterior($usuario->getFechaHoraUltimaConexion());
+            $usuario->setFechaHoraUltimaConexionAnterior($usuario->getFechaHoraUltimaConexion());
+            $fechaAnterior = $usuario->getFechaHoraUltimaConexion();
+            
             UsuarioPDO::actualizarUltimaConexion($usuario->getCodUsuario());
+            
+            $usuario->setFechaHoraUltimaConexionAnterior($fechaAnterior);
+            $usuario->setFechaHoraUltimaConexion(new DateTime());
 
             $_SESSION['userAMNDWESAplicacionFinal'] = $usuario;
+            
             $_SESSION['paginaEnCurso'] = 'inicioPrivado';
             
             header("Location: indexAplicacionFinal.php");

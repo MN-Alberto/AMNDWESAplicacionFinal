@@ -10,11 +10,11 @@ USE DBAMNDWESAplicacionFinal;
  
 CREATE TABLE IF NOT EXISTS T01_Usuario(
     T01_CodUsuario VARCHAR(10) NOT NULL PRIMARY KEY,
-    T01_Password VARCHAR(64) NOT NULL, /* 64 caracteres porque guardamos el hash */
+    T01_Password VARCHAR(64) NOT NULL,
     T01_DescUsuario VARCHAR(255) NOT NULL,
     T01_NumConexiones INT NOT NULL DEFAULT(0),
     T01_FechaHoraUltimaConexion DATETIME DEFAULT(NULL),
-    T01_Perfil VARCHAR(25) DEFAULT('usuario'), /* Seria mas bien el rol del usuario */
+    T01_Perfil VARCHAR(25) DEFAULT('usuario'),
     T01_ImagenUsuario MEDIUMBLOB DEFAULT(NULL)
 );
  
