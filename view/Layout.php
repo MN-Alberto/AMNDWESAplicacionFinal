@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Aplicacion Final</title>
-    
+    <link rel="icon" type="image/png" href="./webroot/cuboIcono.png">
     <style>
         
         body {
@@ -235,10 +235,13 @@
             height: 450px;
             margin-top: 20px;
         }
-
-        #tituloIdiomas{
-            margin-left: 350px;
-            margin-right: 35px;
+        
+        .cajaIdiomas{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            place-items: center;
+            position: absolute;
+            left: 65%;
         }
         
         #español{
@@ -332,12 +335,20 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
-        
+        /*
         #botonVerUser{
             background-color: transparent;
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
+        }
+        */
+        .verUserBtn{
+            background-color: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
         
         #botonVerDept{
@@ -356,6 +367,14 @@
             transition: all 0.3s ease;
         }
         
+        .eliminarBtn{
+            background-color: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        /*
         #botonEliminarU{
             background-color: transparent;
             border: none;
@@ -363,7 +382,8 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
+        */
+        
         #Login{
             position: absolute;
             right: 160px;
@@ -559,15 +579,23 @@
         #foto4:hover{
             scale: 1.30;
         }
+        
+        #foto8{
+            transition: all 0.3s ease;
+        }
+        
+        #foto8:hover{
+            scale: 1.20;
+        }
 
         .botonesCarrusel{
             position: absolute;
             top: 620px;
-            left: 380px;
+            left: 215px;
             /* display: flex;
             flex-direction: row; */
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(9, 1fr);
         }
 
         .botonesCarrusel div{
@@ -606,6 +634,51 @@
         }
 
         .boton4{
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            background: wheat;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .boton5{
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            background: wheat;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .boton6{
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            background: wheat;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .boton7{
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            background: wheat;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .boton8{
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            background: wheat;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .boton9{
             border-radius: 50%;
             width: 45px;
             height: 45px;
@@ -975,6 +1048,33 @@
             height: 20px;
             margin: 0; 
         }
+        
+        #foto6{
+            width: 100%;
+            height: 100%;
+        }
+        
+        #foto9{
+            width: 100%;
+            height: 100%;
+        }
+        
+        #cuboFooter{
+            width: 20px;
+            height: 22px;
+            margin-right: 10px;
+        }
+        
+        footer{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        footer p{
+            color:white;
+        }
     </style>
 
 
@@ -993,9 +1093,11 @@
     ?>
     
     <footer>
+        <img src="./webroot/cuboIcono.png" alt="logo" id="cuboFooter"/>
         <p>Alberto Mendez Nuñez | <a href="https://github.com/MN-Alberto/AMNDWESAplicacionFinal" target="_blank">Repositorio</a> | <a href="https://www.minecraft.net/es-es" target="_blank">Página Imitada</a>
-         | <a href="webroot/alberto_mendez_cv.pdf" target="_blank">CV</a>
-    </p>
+            | <a href="webroot/alberto_mendez_cv.pdf" target="_blank">CV</a> | <a href="https://albertomennun.ieslossauces.es/" target="_blank">Web Autor</a> | <a href="https://github.com/MN-Alberto/AMNDAWProyectoDAW" target="_blank">Repositorio Despliegue</a>
+    | <a href="./doc/index.html" target="_blank">PHPDoc</a>
+    </p> 
         <!-- <a href="https://github.com/MN-Alberto/AMNDWESAplicacionFinal" target="_blank"><img src="webroot/img.png" height="40px"/></a> -->
         <!-- <a href="https://www.minecraft.net/es-es" target="_blank"><img src="webroot/cubo.png" height="40px"/></a> -->
         <!-- <a href="webroot/alberto_mendez_cv.pdf" target="_blank"><img src="webroot/curriculum.png" height="40px"/></a> -->
