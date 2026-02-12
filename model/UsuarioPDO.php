@@ -41,7 +41,7 @@
                $col["T01_Password"],
                $col["T01_DescUsuario"],
                $col["T01_NumConexiones"] + 1,
-               new DateTime(),
+               new DateTime,
                $col["T01_Perfil"],
                $col["T01_ImagenUsuario"],
                $fechaUltimaConexionAnterior
@@ -200,6 +200,41 @@
             if(!$resultado){
                 return null;
             }
+        }
+        
+        
+        /**
+         * Busca a un usuario en base a su codigo
+         *
+         * @param string $codUsuario Código del usuario a buscar
+         * @return Usuario Devuelve un usuario buscado en base a un código pasado como parametro
+         */
+        public static function buscarUsuarioPorCodigo(string $codUsuario) {
+            
+            $query="SELECT * FROM T01_Usuario WHERE T01_CodUsuario=?";
+            
+            $parametros=[$codUsuario];
+            
+            $col= DBPDO::ejecutaConsulta($query, $parametros, PDO::FETCH_ASSOC);
+            
+            if(!$col){
+                return null;
+            }
+
+            $fechaHoraUltimaConexion = isset($col["T01_FechaHoraUltimaConexion"]) && $col["T01_FechaHoraUltimaConexion"] !== null
+                ? new DateTime($col["T01_FechaHoraUltimaConexion"])
+                : null;
+
+                return new Usuario(
+                    $col["T01_CodUsuario"],
+                    $col["T01_Password"],
+                    $col["T01_DescUsuario"],
+                    $col["T01_NumConexiones"],
+                    $fechaHoraUltimaConexion,
+                    $col["T01_Perfil"],
+                    $col["T01_ImagenUsuario"],
+                    $fechaHoraUltimaConexionAnterior ?? null
+                );      
         }
     }
 ?>
