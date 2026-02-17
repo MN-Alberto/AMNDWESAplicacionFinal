@@ -245,7 +245,12 @@ public static function buscarDepartamentoPorDescripcionYEstado(string $descDepar
     if($estadoDepartamento=="Inactivo"){
          $query="SELECT * FROM T02_Departamento WHERE T02_DescDepartamento LIKE ? AND T02_FechaBajaDepartamento IS NOT NULL";   
     }
-    else{
+
+    if($estadoDepartamento=="Todos"){
+         $query="SELECT * FROM T02_Departamento WHERE T02_DescDepartamento LIKE ?";   
+    }
+
+    if($estadoDepartamento=="Activo"){
         $query="SELECT * FROM T02_Departamento WHERE T02_DescDepartamento LIKE ? AND T02_FechaBajaDepartamento IS NULL";
     }
     
@@ -283,5 +288,65 @@ public static function buscarDepartamentoPorDescripcionYEstado(string $descDepar
     // depende de lo que haya devuelto la consulta y si filtramos por descripcion o no
     return $aDepartamentos;
 }
+
+/**
+ * Inserta múltiples departamentos en la base de datos.
+ *
+ * Recibe un array asociativo con los campos de cada departamento.
+ *
+ * @param array $aDepartamentos Array de departamentos a insertar
+ * @return bool Devuelve true si la insercion fue correcta y false si hubo error
+ */
+public static function insertarDepartamentos(array $aDepartamentos): bool {
+
+    $query="
+        INSERT INTO T02_Departamento (
+            T02_CodDepartamento,
+            T02_DescDepartamento,
+            T02_FechaCreacionDepartamento,
+            T02_VolumenDeNegocio,
+            T02_FechaBajaDepartamento
+        ) VALUES (
+            :codDepartamento,
+            :descDepartamento,
+            :fechaCreacionDepartamento,
+            :volumenNegocio,
+            :fechaBajaDepartamento
+            )";
+
+    $parametros = [];
+
+    try {
+            foreach ($aDepartamentos as $departamento) {
+                $fechaCreacionStr = is_array($departamento['fechaCreacionDepartamento'])
+                    ? $departamento['fechaCreacionDepartamento']['date']
+                    : $departamento['fechaCreacionDepartamento'];
+                $oFechaCreacion = new DateTime($fechaCreacionStr);
+
+                if (empty($departamento['fechaBajaDepartamento'])) {
+                    $oFechaBaja = null;
+                } else {
+                    $fechaBajaStr = is_array($departamento['fechaBajaDepartamento'])
+                        ? $departamento['fechaBajaDepartamento']['date']
+                        : $departamento['fechaBajaDepartamento'];
+                    $oFechaBaja = new DateTime($fechaBajaStr);
+                }
+
+                $parametros = [
+                    ':codDepartamento' => $departamento['codDepartamento'],
+                    ':descDepartamento' => $departamento['descDepartamento'],
+                    ':fechaCreacionDepartamento' => $oFechaCreacion->format('Y-m-d'),
+                    ':volumenNegocio' => $departamento['volumenNegocio'],
+                    ':fechaBajaDepartamento' => $oFechaBaja ? $oFechaBaja->format('Y-m-d') : null
+                ];
+
+                DBPDO::ejecutaConsulta($query, $parametros);
+            }
+
+            return true;
+        } catch (PDOException $exPDO) {
+            return false;
+        }
+    }      
 }
 ?>

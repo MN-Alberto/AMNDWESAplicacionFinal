@@ -19,8 +19,28 @@
                         <input type="submit" name="enviar" id="enviar" class="botones" value="Enviar"/>
                 </form>
             </td>
-            <td><h3>HYPIXEL</h3></td>
-            <td><h3>PROPIA</h3></td>
+            <td>
+            <h3>SERVIDOR MINECRAFT</h3>
+            <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="fServer">
+                <select name="servidor">
+                    <option value="hypixel" <?php if(isset($_REQUEST['servidor']) && $_REQUEST['servidor'] === 'hypixel') echo 'selected'; ?>>Hypixel</option>
+                    <option value="mineplex" <?php if(isset($_REQUEST['servidor']) && $_REQUEST['servidor'] === 'mineplex') echo 'selected'; ?>>Mineplex</option>
+                    <option value="cubecraft" <?php if(isset($_REQUEST['servidor']) && $_REQUEST['servidor'] === 'cubecraft') echo 'selected'; ?>>CubeCraft</option>
+                </select>
+                <input type="submit" name="consultar" id="consultar" value="Consultar">
+            </form>
+            </td>
+            <td>
+                <h3>NÚMERO ALEATORIO</h3>
+                <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" id="fNumAleatorio">
+
+                    <input type="number" name="inicio" id="numInicial" placeholder="Primer número">
+
+                    <input type="number" name="fin" id="numFinal" placeholder="Segundo número">
+                    
+                    <input type="submit" name="generar" id="generar" value="Generar Número">
+                </form>
+            </td>
         </tr>
         <tr>
             
@@ -83,7 +103,18 @@
                 ?>
                 
             </td>
-            <td></td>
+
+            <td>
+                <?php
+                    if($oNumero!=null){
+                        echo "<h2>Número Aleatorio: ".$oNumero."</h2>";
+                    }
+
+                    if($errorNumero){
+                        echo "<p style='color:red'>".$errorNumero."</p>";
+                    }
+                ?>
+            </td>
         </tr>
     </table>
     </main>

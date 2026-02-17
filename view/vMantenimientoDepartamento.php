@@ -27,8 +27,30 @@
                 Inactivo
                 <input type="radio" name="estado" value="Inactivo" <?php if($aVista['estado']=="Inactivo"){echo "checked";} ?>>
             </label>
+
+            <label>
+                Todos
+                <input type="radio" name="estado" value="Todos" <?php if($aVista['estado']=="Todos"){echo "checked";} ?>>
+            </label>
         </div>
         </form>
+
+        <div class="exportImport">
+            <form action=<?php echo $_SERVER["PHP_SELF"];?> method="post" class="formExport">
+                <input type="submit" name="exportar" id="exportarDepartamentos" value="Exportar Depts">
+            </form>
+
+            <form action=<?php echo $_SERVER["PHP_SELF"];?> method="post" class="formImport" enctype="multipart/form-data">
+                <label for="archivoDptos">Archivo JSON:</label>
+                <input type="file" name="archivoDptos" id="archivoDptos" accept=".json">
+                <input type="submit" name="importarDptos" value="Importar Depts">
+            </form>
+
+            <?php if($insercionCorrecta){echo $insercionCorrecta;} ?>
+
+            <?php if(isset($aErrores['archivoDptos'])){echo $aErrores['archivoDptos'];} ?>
+        </div>
+
         
 <!-- Si el array de departamentos contiene algo se muestra la tabla -->
         <?php

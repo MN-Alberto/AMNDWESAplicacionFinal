@@ -52,7 +52,8 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2" class="botonCentro"><button type="submit" name="aceptarCambios" id="aceptarCambios">Aceptar</button></td>
+                                <td class="botonCentro"><button type="submit" name="aceptarCambios" id="aceptarCambios">Aceptar</button></td>
+                                <td><button type="submit" name="cambiarPass" id="cambiarPass">CAMBIAR PASSWORD</button></td>
                             </tr>
                         </table>
                     </form>

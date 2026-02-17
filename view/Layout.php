@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Aplicacion Final</title>
+    <title>App Final Alberto</title>
     <link rel="icon" type="image/png" href="./webroot/cuboIcono.png">
     <style>
         
@@ -787,8 +787,42 @@
             border-radius: 10px;
         }
 
+        .error {
+            color: red;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        #archivoDptos{
+            background: none !important;
+            width: 300px;
+            border-radius: 0px;
+        }
+
+        .formImport{
+            margin-top: 20px;
+        }
+
+        .formExport{
+            margin-top: 30px;
+        }
+
         .botonCentro{
             text-align: center;
+        }
+
+        #cambiarPass{
+            height: 40px;
+            width: 140px;
+            border-radius: 10px;
+            transition: all 0.5s ease;
+            background: green;
+            cursor: pointer;
+        }
+
+        #cambiarPass:hover{
+            scale: 1.10 !important;
         }
 
         #aceptarCambios{
@@ -841,6 +875,7 @@
             */
             min-height: 600px;
             margin-top: 60px;
+            margin-bottom: 200px;
         }
 
         .tablaDept table{

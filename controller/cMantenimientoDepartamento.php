@@ -58,13 +58,116 @@
         header('Location: indexAplicacionFinal.php');
         exit;
     }
+
+    if(isset($_REQUEST['exportar'])){
+        //almacenamos en el array los departamentos que ha buscado el usuario
+        $aDepartamentos = DepartamentoPDO::buscarDepartamentoPorDescripcionYEstado($_SESSION['buscado'], $_SESSION['estadoBuscado']);
+
+        //array para almacenar todos los departamentos
+        $aArchivoDepartamentos = [];
+
+        //si hay departamentos
+        if(!is_null($aDepartamentos) && is_array($aDepartamentos)){
+            //recorremos cada departamento
+            foreach($aDepartamentos as $dept){
+                //y lo almacenamos el el array del archivo para que contenga todos los departamentos buscados
+                $aArchivoDepartamentos[] = [
+                    'codDepartamento' => $dept->getCodDepartamento(),
+                    'descDepartamento' => $dept->getDescDepartamento(),
+                    'fechaCreacionDepartamento' => $dept->getFechaCreacionDepartamento(),
+                    'volumenNegocio' => $dept->getVolumenDeNegocio(),
+                    'fechaBajaDepartamento' => $dept->getFechaBajaDepartamento()
+                ];
+            }
+        }
+
+        //convertimos el array a json con los departamentos buscados con formato legible
+        $archivo = json_encode($aArchivoDepartamentos, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        
+        //indicamos que es un json descargable
+        header('Content-Type: application/json');
+
+        //le indicamos el nombre del archivo
+        header('Content-Disposition: attachment; filename="departamentosExportados.json"');
+
+        //mandamos el contenido al navegador
+        echo $archivo;
+        exit;
+    }
+
+    //variable para almacenar la serpuesta si la insercion es correcta
+    $insercionCorrecta=null;
+
+    if(isset($_REQUEST['importarDptos'])){
+        //variable para la entradaOK del archivo
+        $archivoOk = true;
+
+        //almacena los errores del archivo a importar
+        $aErrores['archivoDptos'] = null;
+
+        //cogemos el nombre del archivo
+        $nombreArchivo = $_FILES['archivoDptos']['name'] ?? '';
+
+        //la extension del archivo tiene que ser json
+        $aExtensiones = ['json'];
+
+        //validamos el nombre del archivo con la extension json
+        $aErrores['archivoDptos'] = validacionFormularios::validarNombreArchivo($nombreArchivo, $aExtensiones, 150, 4, 0);
+
+        //si hay errores la entradaOK del archivo será falsa
+        if(!empty($aErrores['archivoDptos'])){
+            $archivoOk = false;
+        }
+
+        //comprobamos si no se ha seleccionado un archivo
+        if($_FILES['archivoDptos']['error'] === UPLOAD_ERR_NO_FILE){
+            $aErrores['archivoDptos'] = "Por favor seleccione un archivo a importar";
+            $archivoOk = false;
+        }
+
+        //si el archivo se ha subido correctamente lo procesamos
+        if($archivoOk && $_FILES['archivoDptos']['error'] === UPLOAD_ERR_OK){
+            //leemos el contenido del archivo json
+            $contenidoArchivo = file_get_contents($_FILES['archivoDptos']['tmp_name']);
+
+            //convertimos el json a un array
+            $aDptos = json_decode($contenidoArchivo, true);
+
+            //campos que deben tener cada departamento para que sea valido
+            $aCamposObligatorios = [
+                'codDepartamento',
+                'descDepartamento',
+                'fechaCreacionDepartamento',
+                'volumenNegocio',
+                'fechaBajaDepartamento'
+            ];
+
+    
+            //verificamos que cada departamento tenga todos los campos obligatorios y si falta alguno marcamos el archivo como incorrecto y mostramos un error
+            foreach($aDptos as $indice => $oDepartamento){
+                foreach($aCamposObligatorios as $campo){
+                    if(!array_key_exists($campo, $oDepartamento)){
+                        $archivoOk = false;
+                        $aErrores['archivoDptos'] = "Error en el registro $indice: falta el campo $campo";
+                        break 2; //con esto salimos de los dos bucles de golpe
+                    }
+                }
+            }
+
+            //si el archivo es correcto insertamos los departamentos en la base de datos y inicializamos el mensaje
+            if($archivoOk){
+                DepartamentoPDO::insertarDepartamentos($aDptos);
+                $insercionCorrecta = "La inserción de departamentos se ha realizado correctamente";
+            }
+        }
+    }
+
     
     require_once './model/Departamento.php';
     require_once './model/DepartamentoPDO.php';
     
     $entradaOK = true;
     $aErrores = ["descripcion" => ""]; //Array que almacena los errores en el campo descripcion
-    
 
     //si pulsamos en el boton buscar
     if (isset($_REQUEST['buscar'])) {
