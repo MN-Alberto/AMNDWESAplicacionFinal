@@ -1,5 +1,12 @@
 <?php
 
+    if(!isset($_SESSION['userAMNDWESAplicacionFinal'])){
+        $_SESSION['paginaAnterior']=$_SESSION['paginaEnCurso'];
+        $_SESSION['paginaEnCurso']='inicioPublico';
+        header("Location: indexAplicacionFinal.php");
+        exit;
+    }
+
     require_once './model/Rest.php';
     require_once './model/NASA.php';
     require_once './model/HYPIXEL.php';
@@ -97,10 +104,14 @@
         }
         
         class datosServidor{
-            public static function mostrarDatos() {
-                $datos= Rest::apiServerInfo();
-                
-                
+            public static function mostrarDatos($ipServidor=null) {
+
+                if($ipServidor === null){
+                    return null;
+                }
+
+                $datos= Rest::apiServerInfo($ipServidor);
+
                 if($datos){
                     $respuestaServidor = new HYPIXEL(
                             $datos['ip'] ?? 'Desconocida',             
@@ -117,8 +128,31 @@
         }
         
         $oDatos=null;
+
+        $ipServidor = "play.hypixel.net";
+        $seleccion = "hypixel";
+
+        if(isset($_REQUEST['consultar']) && !empty($_REQUEST['servidor'])){
+
+            switch($_REQUEST['servidor']){
+                case "hypixel":
+                    $ipServidor = "play.hypixel.net";
+                    $seleccion = "hypixel";
+                    break;
+                case "mineplex":
+                    $ipServidor = "us.mineplex.com";
+                    $seleccion = "mineplex";
+                    break;
+                case "cubecraft":
+                    $ipServidor = "play.cubecraft.net";
+                    $seleccion = "cubecraft";
+                    break;
+            }
+        }
         
-        $oDatos= datosServidor::mostrarDatos();
+        if($ipServidor !== null){
+                $oDatos= datosServidor::mostrarDatos($ipServidor);
+        }
         
         if($oDatos){
             $_SESSION['hypixel']=[
@@ -144,6 +178,36 @@
         else {
             $oDatos=null;
         }
+
+
+        $inicio = $_REQUEST['inicio'] ?? null;
+        $fin = $_REQUEST['fin'] ?? null;
+
+        $oNumero = null;
+        $errorNumero = null;
+
+        if(isset($_REQUEST['generar'])){
+            $resultado = Rest::obtenerNumeroAleatorio($inicio, $fin);
+            $oNumero = $resultado['numero'];
+            $errorNumero = $resultado['error'];
+            $inicio = $resultado['inicio'];
+            $fin = $resultado['fin'];
+
+            $_SESSION['numeroAleatorio'] = [
+                'numero' => $oNumero,
+                'inicio' => $inicio,
+                'fin' => $fin,
+                'error' => $errorNumero
+            ];
+        }
+
+        if(isset($_SESSION['numeroAleatorio'])){
+            $oNumero = $_SESSION['numeroAleatorio']['numero'];
+            $errorNumero = $_SESSION['numeroAleatorio']['error'];
+            $inicio = $_SESSION['numeroAleatorio']['inicio'];
+            $fin = $_SESSION['numeroAleatorio']['fin'];
+        }
+
 
         require_once $view["Layout"]; //llamada a la vista
 ?>

@@ -8,7 +8,8 @@
     }
     
     if(isset($_REQUEST['cerrar'])){
-        $_SESSION["paginaEnCurso"]=$_SESSION['paginaAnterior'];
+        $_SESSION['paginaAnterior']=$_SESSION['paginaEnCurso'];
+        $_SESSION['paginaEnCurso']='inicioPrivado';
         header("Location: indexAplicacionFinal.php");
         exit;
     }
@@ -16,6 +17,13 @@
     if(isset($_REQUEST['eliminarUser'])){
         $_SESSION["paginaEnCurso"]=$_SESSION['paginaAnterior'];
         $_SESSION['paginaEnCurso']='preguntaEliminarUsuario';
+        header("Location: indexAplicacionFinal.php");
+        exit;
+    }
+
+    if(isset($_REQUEST['cambiarPass'])){
+        $_SESSION['paginaAnterior']=$_SESSION['paginaEnCurso'];
+        $_SESSION['paginaEnCurso']='cambiarPassword';
         header("Location: indexAplicacionFinal.php");
         exit;
     }
@@ -79,8 +87,11 @@
     $descripcion=$_SESSION['userAMNDWESAplicacionFinal']->getDescUsuario();
     $nomUsuario=$_SESSION['userAMNDWESAplicacionFinal']->getCodUsuario();
     $nConexiones=$_SESSION['userAMNDWESAplicacionFinal']->getNumConexiones();
-    $ultimaConexion=$_SESSION['userAMNDWESAplicacionFinal']->getFechaHoraUltimaConexion()->format('d/m/Y H:i:s');
-    $ultimaConexionAnterior=$_SESSION['userAMNDWESAplicacionFinal']->getFechaHoraUltimaConexionAnterior()->format('d/m/Y H:i:s');
+    $ultimaConexionAnterior=$_SESSION['userAMNDWESAplicacionFinal']->getFechaHoraUltimaConexion()->format('d/m/Y H:i:s');
+    $ultimaConexion = isset($_SESSION['userAMNDWESAplicacionFinal']) 
+        && $_SESSION['userAMNDWESAplicacionFinal']->getFechaHoraUltimaConexionAnterior() !== null
+        ? $_SESSION['userAMNDWESAplicacionFinal']->getFechaHoraUltimaConexionAnterior()->format('d/m/Y H:i:s')
+        : (new DateTime())->format('d/m/Y H:i:s');
     
     require_once $view['Layout'];
 ?>

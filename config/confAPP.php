@@ -32,7 +32,8 @@
         "eliminarDepartamento" => "controller/cEliminarDepartamento.php",
         "mantenimientoUsuario" => "controller/cMantenimientoUsuario.php",
         "verDepartamento" => "controller/cConsultarModificarDepartamento.php",
-        "preguntaEliminarUsuario" => "controller/cPreguntaEliminarUsuario.php"
+        "preguntaEliminarUsuario" => "controller/cPreguntaEliminarUsuario.php",
+        "cambiarPassword" => "controller/cCambiarPassword.php"
     ];
     
     //Array asociativo para las distintas páginas de la vista con sus respectivas rutas.
@@ -54,7 +55,8 @@
         "eliminarDepartamento" => "view/vEliminarDepartamento.php",
         "mantenimientoUsuario" => "view/vMantenimientoUsuario.php",
         "verDepartamento" => "view/vConsultarModificarDepartamento.php",
-        "preguntaEliminarUsuario" => "view/vPreguntaEliminarUsuario.php"
+        "preguntaEliminarUsuario" => "view/vPreguntaEliminarUsuario.php",
+        "cambiarPassword" => "view/vCambiarPassword.php"
     ];
     
     const preguntaSeguridad="pimentel";

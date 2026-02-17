@@ -160,6 +160,10 @@ class Usuario {
         $this->numConexiones = $numConexiones;
     }
 
+    public function setPassword($password){
+        $this->password = $password;
+    }
+
 
 }
 ?>

@@ -64,6 +64,29 @@ if (!$_SESSION['respuestaCorrecta']){
             <td><input type="password" name="pass" id="pass" placeholder="Introduce contraseña:"></td>
             
             </tr>
+
+            <tr style="background-color:#ffffff; color:black;">
+            <td><label for="usuario" id="ps">REPITE CONTRASEÑA:</label></td>
+            <td><input type="password" name="pass2" id="pass2" placeholder="Introduce contraseña:"></td>
+            </tr>
+
+            <?php if(isset($aErrores['repitePass']) && $aErrores['repitePass'] != null){ ?>
+            <tr style="background-color:#ffffff; color:black;">
+                <td colspan=2>
+                    <span style="color:red;"><?php echo $aErrores['repitePass']; ?></span>
+                </td>
+            </tr>
+            <?php } ?>
+
+            <?php if(isset($aErrores['codUsuario']) && $aErrores['codUsuario'] != null){ ?>
+            <tr style="background-color:#ffffff; color:black;">
+                <td colspan=2>
+                    <span style="color:red;"><?php echo $aErrores['codUsuario']; ?></span>
+                </td>
+            </tr>
+            <?php } ?>
+            
+            </tr>
             </table>
             <br>
             <div>

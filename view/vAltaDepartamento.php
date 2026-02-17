@@ -22,4 +22,10 @@
             <button type="submit" name="confirmarAñadir" id="btnConfEdit">Aceptar</button>
            
         </form>
+
+        <span style="color: red;">
+            <b>
+            <?php if($aVista['errorCod'] != null) { echo $aVista['errorCod']; } ?>
+            </b>
+        </span>
     </main>

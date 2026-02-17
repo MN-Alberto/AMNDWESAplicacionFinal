@@ -67,6 +67,17 @@
             DBPDO::ejecutaConsulta($query, [$codUsuario]);
         }
 
+        public static function existeUsuario(string $codUsuario) {
+            $query = "SELECT * FROM T01_Usuario WHERE T01_CodUsuario = ?";
+            $col = DBPDO::ejecutaConsulta($query, [$codUsuario]);
+
+            if(empty($col)){
+                return false;
+            }
+
+            return true;
+        }
+
         /**
          * Registra un nuevo usuario en la base de datos.
          *
@@ -77,8 +88,11 @@
          */
         
         public static function registrarUsuario(string $codUsuario, string $descUsuario, string $password){
-            
             $oUsuario = null;
+
+            if(self::existeUsuario($codUsuario)){
+                return null;
+            }
         
             $query=<<<SQL
             INSERT INTO T01_Usuario (T01_CodUsuario, T01_DescUsuario,
@@ -87,20 +101,23 @@
             (:codUsuario, :descUsuario, now(), null, 0, SHA2(:password, 256), 'usuario')
             SQL;
             
-            try {
+            
             $consulta = DBPDO::ejecutaConsulta($query, [
                 ':codUsuario' => $codUsuario,
                 ':descUsuario' => $descUsuario,
                 ':password' => $password
             ]);
 
-            if ($consulta) {
-                $oUsuario = self::validarUsuario($codUsuario, $password);
-            }
-        } catch (Exception $e) {
-           echo $e->getMessage();
-           exit;
-        }
+            $oUsuario = new Usuario(
+                $codUsuario,
+                $password,
+                $descUsuario,
+                0,
+                new DateTime(),
+                'usuario',
+                null,
+                null
+            );
 
         return $oUsuario;
 
@@ -235,6 +252,28 @@
                     $col["T01_ImagenUsuario"],
                     $fechaHoraUltimaConexionAnterior ?? null
                 );      
+        }
+
+        public static function cambiarPassword(Usuario $oUsuario, string $password){
+
+            $query="UPDATE T01_Usuario SET T01_Password = :password WHERE T01_CodUsuario = :codUsuario";
+
+             try {
+
+                $passwordHash=hash('sha256', $password);
+
+                DBPDO::ejecutaConsulta($query, [
+                    ':password' => $passwordHash,
+                    ':codUsuario' => $oUsuario->getCodUsuario()
+                ]);
+                
+                $oUsuario->setPassword($passwordHash);
+
+                return $oUsuario;
+
+            } catch (Exception $ex) {
+                return null;
+            }
         }
     }
 ?>

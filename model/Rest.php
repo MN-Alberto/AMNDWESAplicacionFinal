@@ -93,10 +93,12 @@ class Rest {
      *
      * @return array|null Devuelve un array con los datos de la API o null si da error
      */
-    public static function apiServerInfo(){
-        $url='https://api.mcsrvstat.us/2/play.hypixel.net';
+    public static function apiServerInfo($ip){
+        //$url='https://api.mcsrvstat.us/2/play.hypixel.net';
         //$url='https://api.mcsrvstat.us/2/play.cubecraft.net';
         //$url='https://api.mcsrvstat.us/2/mcs.gg';
+
+        $url = "https://api.mcsrvstat.us/2/" . $ip;
         
         $ch = curl_init($url);
         
@@ -126,5 +128,72 @@ class Rest {
         
         return $datos;
     }
+
+
+/**
+ * Obtiene un número aleatorio en base a dos números pasados como parametro
+ *
+ * @return array Devuelve un array con los datos de la API
+ */
+    public static function obtenerNumeroAleatorio($inicio, $fin) {
+        //array que va a almacenar los datos del numero
+        $resultadoNumero = [
+            'numero' => null,
+            'error' => null,
+            'inicio' => $inicio,
+            'fin' => $fin
+        ];
+
+        //si los datos introducidos en los numeros inicial o final no son numeros devolvemos un error
+        if (!is_numeric($inicio) || !is_numeric($fin)) {
+            $resultadoNumero['error'] = "Debes introducir números";
+            return $resultadoNumero;
+        }
+
+        //url de la api que genera el numero
+        $url = "http://localhost/appFinal/api/wsNumeroAleatorio.php?inicio={$inicio}&fin={$fin}";
+        //inicializamos curl
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        //tiempo de espera de 10 segundos
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+
+        //quitamos verificacion del certificado
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+        //ejecutamos culr y almacenamos la respuesta en la variable
+        $respuesta = curl_exec($ch);
+
+        //si la respuesta es falsa no se ha podido conectar a la api
+        if ($respuesta === false) {
+            $resultadoNumero['error'] = "No se pudo conectar a la API: " . curl_error($ch);
+            curl_close($ch);
+            return $resultadoNumero;
+        }
+
+        //si si a podido cerramos curl
+        curl_close($ch);
+
+        //decodificamos la respuesta json a un array
+        $data = json_decode($respuesta, true);
+
+        //si la api devolvio un error
+        if(isset($data['error'])){
+            //lo guardamos para mostrarlo
+            $resultadoNumero['error'] = $data['error'];
+        } else {
+            //si no ha habido error guardamos el numero generado junto con los numeros de inicio y fin dados como parametro
+            $resultadoNumero['numero'] = $data['numeroAleatorio'];
+            $resultadoNumero['inicio'] = $data['inicio'];
+            $resultadoNumero['fin'] = $data['fin'];
+        }
+
+        //devolvemos el array
+        return $resultadoNumero;
+    }
+
 }
 ?>
