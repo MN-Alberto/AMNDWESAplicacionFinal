@@ -125,7 +125,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             height: auto;
-            text-align:center;
+            text-align:left;
             justify-content:center;
             color: white;
         }
@@ -405,6 +405,14 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
+
+        .cambiarPerfilBtn{
+            background-color: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease; 
+        }
         /*
         #botonEliminarU{
             background-color: transparent;
@@ -622,7 +630,7 @@
         .botonesCarrusel{
             position: absolute;
             top: 620px;
-            left: 215px;
+            left: 255px;
             /* display: flex;
             flex-direction: row; */
             display: grid;

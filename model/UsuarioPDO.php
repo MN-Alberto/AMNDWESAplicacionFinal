@@ -275,5 +275,25 @@
                 return null;
             }
         }
+
+        /**
+         * Cambia el perfil de un usuario
+         *
+         * @param string $codUsuario Codigo del usuario
+         * @param string $nuevoPerfil Nuevo perfil (usuario o administrador)
+         * @return bool|null
+         */
+        public static function cambiarPerfil(string $codUsuario, string $nuevoPerfil){
+
+            $query="UPDATE T01_Usuario SET T01_Perfil = ? WHERE T01_CodUsuario = ?";
+
+            $resultado=DBPDO::ejecutaConsulta($query, [$nuevoPerfil, $codUsuario]);
+
+            if(!$resultado){
+                return null;
+            }
+
+            return true;
+        }
     }
 ?>
