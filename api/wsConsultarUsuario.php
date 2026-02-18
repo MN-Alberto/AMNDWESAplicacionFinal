@@ -21,7 +21,7 @@ $errorCodigo= validacionFormularios::comprobarAlfaNumerico($codUsuario, 255, 0,0
 if($errorCodigo!=null){
     header('Content-Type: application/json');
     echo json_encode([
-        "error" => $errorCod,
+        "error" => $errorCodigo,
     ]);
     exit;
 }

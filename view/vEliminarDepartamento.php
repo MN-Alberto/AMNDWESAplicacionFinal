@@ -13,13 +13,13 @@
             <input type="text" name="codDept" id="cDeptEditar" value="<?php echo $aVista['codDepartamento']; ?>" disabled/>
             
             <label for="descDept">Descripción:</label>
-            <input type="text" name="descDept" id="dDeptEditar" value="<?php echo $aVista['descDepartamento']; ?>"/>
+            <input type="text" name="descDept" id="dDeptEditar" value="<?php echo $aVista['descDepartamento']; ?>" disabled/>
             
             <label for="fCreacionDept">Fecha de Creación:</label>
             <input type="text" name="fCreacionDept" id="fCreaDeptEditar" value="<?php echo $aVista['fechaCreacion']; ?>" disabled/>
             
             <label for="volumen">Volumen de Negocio:</label>
-            <input type="text" name="volumenNegocio" id="fCreaDeptEditar" value="<?php echo $aVista['volumenNegocio']; ?>"/>
+            <input type="text" name="volumenNegocio" id="fCreaDeptEditar" value="<?php echo $aVista['volumenNegocio']; ?>" disabled/>
             
             <label for="fBajaDept">Fecha de Baja:</label>
             <input type="text" name="fBajaDept" id="fBajaDeptEditar" value="<?php echo $aVista['fechaBaja']; ?>" disabled/>

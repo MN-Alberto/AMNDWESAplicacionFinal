@@ -45,6 +45,19 @@
             top: 280px;
         }
         
+        .botonesUsuarios{
+            width: 100px;
+            height: 40px;
+            background: green;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .botonesUsuarios:hover{
+            scale: 1.10 !important;
+        }
+        
         #eliminarUser{
             background: red;
             color: white;
@@ -59,6 +72,24 @@
         
         #h1Publico{
             margin-right: 450px;
+        }
+        
+        .listaServers{
+            width: 100px;
+            height: 40px;
+            background: lightcyan;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        
+        #numInicial{
+            width: 70px;
+            background: lightcyan;
+        }
+        
+        #numFinal{
+            width: 70px;
+            background: lightcyan;
         }
         
         #f1{
@@ -1131,11 +1162,8 @@
         <img src="./webroot/cuboIcono.png" alt="logo" id="cuboFooter"/>
         <p>Alberto Mendez Nuñez | <a href="https://github.com/MN-Alberto/AMNDWESAplicacionFinal" target="_blank">Repositorio</a> | <a href="https://www.minecraft.net/es-es" target="_blank">Página Imitada</a>
             | <a href="webroot/alberto_mendez_cv.pdf" target="_blank">CV</a> | <a href="https://albertomennun.ieslossauces.es/" target="_blank">Web Autor</a> | <a href="https://github.com/MN-Alberto/AMNDAWProyectoDAW" target="_blank">Repositorio Despliegue</a>
-    | <a href="./doc/index.html" target="_blank">PHPDoc</a>
+    | <a href="./doc/index.html" target="_blank">PHPDoc</a> | <a href="./doc/doxygen/html/index.html" target="_blank">DoxyGen</a>
     </p> 
-        <!-- <a href="https://github.com/MN-Alberto/AMNDWESAplicacionFinal" target="_blank"><img src="webroot/img.png" height="40px"/></a> -->
-        <!-- <a href="https://www.minecraft.net/es-es" target="_blank"><img src="webroot/cubo.png" height="40px"/></a> -->
-        <!-- <a href="webroot/alberto_mendez_cv.pdf" target="_blank"><img src="webroot/curriculum.png" height="40px"/></a> -->
     </footer>
 </body>
 </html>

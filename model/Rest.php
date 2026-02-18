@@ -151,7 +151,7 @@ class Rest {
         }
 
         //url de la api que genera el numero
-        $url = "http://localhost/appFinal/api/wsNumeroAleatorio.php?inicio={$inicio}&fin={$fin}";
+        $url = "http://daw207.local.ieslossauces.es/AMNDWESAplicacionFinal/api/wsNumeroAleatorio.php?inicio={$inicio}&fin={$fin}";
         //inicializamos curl
         $ch = curl_init($url);
 

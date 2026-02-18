@@ -250,7 +250,7 @@
                     $fechaHoraUltimaConexion,
                     $col["T01_Perfil"],
                     $col["T01_ImagenUsuario"],
-                    $fechaHoraUltimaConexionAnterior ?? null
+                    null
                 );      
         }
 
