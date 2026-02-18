@@ -46,6 +46,7 @@ function cargarUsuarios(descripcion = "") {
                         <td>
                             <button class="verUserBtn" data-codusuario="${usuario.codigoUsuario}">👁️</button>
                             <button class="eliminarBtn" data-codusuario="${usuario.codigoUsuario}">🗑️</button>
+                            <button class="cambiarPerfilBtn" data-codusuario="${usuario.codigoUsuario}">🔄</button>
                         </td>
                     `;
 
@@ -66,6 +67,12 @@ function cargarUsuarios(descripcion = "") {
                     });
                 });
 
+                document.querySelectorAll(".cambiarPerfilBtn").forEach(boton => {
+                    boton.addEventListener("click", function() {
+                        const codUsuario = this.dataset.codusuario;
+                        cambiarPerfil(codUsuario);
+                    });
+                });
             } 
             else {
                 cuerpoTabla.innerHTML = `<tr><td colspan="6">No hay usuarios con esa descripción</td></tr>`;
@@ -149,5 +156,52 @@ function eliminarUsuario(codUsuario){
                 }
             })
             .catch(err => console.error("Error al eliminar usuario:", err));
+    });
+}
+
+function cambiarPerfil(codUsuario){
+    const nuevoPerfil = `
+        <h2>Cambiar Perfil</h2>
+        <p><strong>Usuario:</strong>${codUsuario}</p>
+        
+        <label>Nuevo perfil:</label>
+        <select id="nuevoPerfilSelect">
+            <option value="usuario">usuario</option>
+            <option value="administrador">administrador</option>
+        </select>
+        <br><br>
+
+        <button class="botonesUsuarios" id="confirmarCambiar">Aceptar</button>
+        <button class="botonesUsuarios" id="cancelarCambiar">Cancelar</button>
+    `;
+
+    const cuerpoTabla = document.querySelector(".tablaUsers tbody");
+    cuerpoTabla.innerHTML = `
+        <tr>
+            <td colspan="6">${nuevoPerfil}</td>
+        </tr>
+    `;
+
+    document.getElementById("cancelarCambiar").addEventListener("click", () => {
+        const descripcion = document.getElementById("buscarDesc").value.trim();
+        cargarUsuarios(descripcion);
+    });
+
+    document.getElementById("confirmarCambiar").addEventListener("click", () => {
+
+        const nuevoPerfil = document.getElementById("nuevoPerfilSelect").value;
+
+        fetch(`./api/wsCambiarPerfilUsuario.php?codUsuario=${encodeURIComponent(codUsuario)}&perfil=${encodeURIComponent(nuevoPerfil)}`)
+            .then(res => res.json())
+            .then(data => {
+                if(data.error){
+                    alert(data.error);
+                } else {
+                    alert(data.mensaje);
+                    const descripcion = document.getElementById("buscarDesc").value.trim();
+                    cargarUsuarios(descripcion);
+                }
+            })
+            .catch(err => console.error("Error al cambiar perfil:", err));
     });
 }

@@ -32,7 +32,6 @@
 
         <div class="botonesCarrusel">
             <div class="boton1"></div>
-            <div class="boton2"></div>
             <div class="boton3"></div>
             <div class="boton4"></div>
             <div class="boton5"></div>
@@ -44,7 +43,6 @@
 
             <div class="fotos">
                 <img src="./webroot/arbolNavegacion.png.jpg" alt="foto1" id="foto1"/>
-                <img src="./webroot/diagramaClases.PNG" alt="foto2" id="foto2"/>
                 <img src="./webroot/sesion.png" alt="foto3" id="foto3"/>
                 <img src="./webroot/diagramaPropio.png" alt="foto4" id="foto4"/>
                 <img src="./webroot/estructuraAlmacenamiento.PNG" alt="foto5" id="foto5"/>

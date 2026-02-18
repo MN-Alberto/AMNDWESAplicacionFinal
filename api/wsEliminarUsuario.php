@@ -2,7 +2,7 @@
 
 /*
  * Autor: Alberto Méndez 
- * Fecha de actualización: 18/02/2026
+ * Fecha de actualización: 17/02/2026
  * 
  */
 
