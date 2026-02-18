@@ -58,8 +58,16 @@ function cargarUsuarios(descripcion = "") {
                         consultarUsuario(codUsuario);
                     });
                 });
+                
+                document.querySelectorAll(".eliminarBtn").forEach(boton => {
+                    boton.addEventListener("click", function() {
+                        const codUsuario = this.dataset.codusuario;
+                        eliminarUsuario(codUsuario);
+                    });
+                });
 
-            } else {
+            } 
+            else {
                 cuerpoTabla.innerHTML = `<tr><td colspan="6">No hay usuarios con esa descripción</td></tr>`;
             }
         })
@@ -67,7 +75,7 @@ function cargarUsuarios(descripcion = "") {
 }
 
 function consultarUsuario(codUsuario) {
-    let url = `./api/wsBuscarUsuarioPorCodigo.php?codUsuario=${encodeURIComponent(codUsuario)}`;
+    let url = `./api/wsConsultarUsuario.php?codUsuario=${encodeURIComponent(codUsuario)}`;
 
     fetch(url)
         .then(response => response.json())
@@ -79,11 +87,12 @@ function consultarUsuario(codUsuario) {
 
             const datosUsuario = `
                 <h2>Consultar Usuario</h2>
-                <p><strong>Usuario:</strong> ${usuario.codigoUsuario}</p>
+                <p><strong>Usuario:</strong> ${usuario.codigo}</p>
                 <p><strong>Descripción:</strong> ${usuario.descripcion}</p>
                 <p><strong>Nº Conexiones:</strong> ${usuario.numConexiones}</p>
                 <p><strong>Última conexión:</strong> ${usuario.ultimaConexion ?? "No conectado"}</p>
                 <p><strong>Perfil:</strong> ${usuario.perfil}</p>
+                <button class="botonesUsuarios" id="cerrarConsultar">Cerrar</button>
             `;
 
             const cuerpoTabla = document.querySelector(".tablaUsers tbody");
@@ -92,6 +101,53 @@ function consultarUsuario(codUsuario) {
                     <td colspan="6">${datosUsuario}</td>
                 </tr>
             `;
+        
+            const btnCerrar = document.getElementById("cerrarConsultar");
+            if (btnCerrar) {
+                btnCerrar.addEventListener("click", () => {
+                    const descripcion = document.getElementById("buscarDesc").value.trim();
+                    cargarUsuarios(descripcion);
+                });
+            }
         })
         .catch(error => console.error("Error al cargar usuario:", error));
+}
+
+function eliminarUsuario(codUsuario){
+    const seguroEliminar = `
+        <h2>Eliminar Usuario</h2>
+        <p><strong>Seguro que desea eliminar el usuario:</strong> ${codUsuario}</p>
+        <button class="botonesUsuarios" id="confirmarEliminar">Eliminar</button>
+        <button class="botonesUsuarios" id="cancelarEliminar">Cancelar</button>
+    `;
+
+    const cuerpoTabla = document.querySelector(".tablaUsers tbody");
+    cuerpoTabla.innerHTML = `
+        <tr>
+            <td colspan="6">${seguroEliminar}</td>
+        </tr>
+    `;
+
+    const btnCancelar = document.getElementById("cancelarEliminar");
+    btnCancelar.addEventListener("click", () => {
+        const descripcion = document.getElementById("buscarDesc").value.trim();
+        cargarUsuarios(descripcion);
+    });
+
+    const btnConfirmar = document.getElementById("confirmarEliminar");
+    btnConfirmar.addEventListener("click", () => {
+        fetch(`./api/wsEliminarUsuario.php?codUsuario=${encodeURIComponent(codUsuario)}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                } 
+                else {
+                    alert(data.mensaje);
+                    const descripcion = document.getElementById("buscarDesc").value.trim();
+                    cargarUsuarios(descripcion);
+                }
+            })
+            .catch(err => console.error("Error al eliminar usuario:", err));
+    });
 }
