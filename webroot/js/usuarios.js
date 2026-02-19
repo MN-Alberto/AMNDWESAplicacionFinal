@@ -215,27 +215,21 @@ function cambiarPerfil(codUsuario){
 }
 
 function cambiarPassword(codUsuario){
-    const nuevaPassword = `
+    const nuevaPasswordHTML = `
         <h2>Cambiar Password</h2>
-        <p><strong>Usuario:</strong>${codUsuario}</p>
-            <div class="cambiarPasswordUsuario">
+        <p><strong>Usuario:</strong> ${codUsuario}</p>
+        <div class="cambiarPasswordUsuario">
             <div>
-            <label for="passwordAnterior">Password actual:</label>
-            <input type="password" name="passwordAnterior" id="passwordAnterior" placeholder="Introduce password actual">
-            </div>
-    
-            <div>
-            <label for="nuevaPassword">Nueva password:</label>
-            <input type="password" name="nuevaPassword" id="nuevaPassword" placeholder="Introduce nueva password">
+                <label for="nuevaPassword">Nueva password:</label>
+                <input type="password" name="nuevaPassword" id="nuevaPassword" placeholder="Introduce nueva password">
             </div>
 
             <div>
-            <label for="nuevaPasswordRepetir">Repetir nueva password:</label>
-            <input type="password" name="nuevaPasswordRepetir" id="nuevaPasswordRepetir" placeholder="Introduce nueva password de nuevo">
+                <label for="nuevaPasswordRepetir">Repetir nueva password:</label>
+                <input type="password" name="nuevaPasswordRepetir" id="nuevaPasswordRepetir" placeholder="Introduce nueva password de nuevo">
             </div>
-            </div>
+        </div>
         <br><br>
-
         <button class="botonesUsuarios" id="confirmarCambiarPassword">Aceptar</button>
         <button class="botonesUsuarios" id="cancelarCambiarPassword">Cancelar</button>
     `;
@@ -243,7 +237,7 @@ function cambiarPassword(codUsuario){
     const cuerpoTabla = document.querySelector(".tablaUsers tbody");
     cuerpoTabla.innerHTML = `
         <tr>
-            <td colspan="6">${nuevaPassword}</td>
+            <td colspan="6">${nuevaPasswordHTML}</td>
         </tr>
     `;
 
@@ -253,12 +247,10 @@ function cambiarPassword(codUsuario){
     });
 
     document.getElementById("confirmarCambiarPassword").addEventListener("click", () => {
-
-        const passwordAnterior = document.getElementById("passwordAnterior").value;
         const nuevaPassword = document.getElementById("nuevaPassword").value;
         const nuevaPasswordRepetir = document.getElementById("nuevaPasswordRepetir").value;
 
-        fetch(`./api/wsCambiarPasswordUsuario.php?codUsuario=${encodeURIComponent(codUsuario)}&passwordAnterior=${encodeURIComponent(passwordAnterior)}&nuevaPassword=${encodeURIComponent(nuevaPassword)}&nuevaPasswordRepetir=${encodeURIComponent(nuevaPasswordRepetir)}`)
+        fetch(`./api/wsCambiarPasswordUsuario.php?codUsuario=${encodeURIComponent(codUsuario)}&nuevaPassword=${encodeURIComponent(nuevaPassword)}&nuevaPasswordRepetir=${encodeURIComponent(nuevaPasswordRepetir)}`)
             .then(res => res.json())
             .then(data => {
                 if (data.error) {

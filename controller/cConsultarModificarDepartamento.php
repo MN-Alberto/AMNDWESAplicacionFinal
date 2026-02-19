@@ -70,11 +70,15 @@
         //llamamos al metodo buscar por codigo en base al codigo almacenado en la sesion
         $oDepartamento=DepartamentoPDO::buscarDepartamentoPorCodigo($_SESSION['codDepartamentoEnCurso']);
 
-        if($_REQUEST['volumenNegocio']<0){
-            $_REQUEST['volumenNegocio']=0;
+        if(is_numeric($_REQUEST['volumenNegocio'])){
+            if($_REQUEST['volumenNegocio']<0){
+                $_REQUEST['volumenNegocio']=0;
+            }
         }
-        elseif ($_REQUEST['volumenNegocio']>10000){
-            $_REQUEST['volumenNegocio']=10000;
+        else{
+            $_SESSION['paginaEnCurso']='modificarDepartamento';
+            header('Location: indexAplicacionFinal.php');
+            exit;
         }
         
         //llamamos al metodo modificar departamento en base al codigo de la sesion y los nuevos valores de descripcion y volumen introducidos en el formulario
