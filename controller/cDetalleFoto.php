@@ -1,4 +1,10 @@
 <?php
+
+    /*
+    * Autor: Alberto Méndez 
+    * Fecha de actualización: 16/02/2026
+    * 
+    */
     if(isset($_REQUEST['Volver'])){
         $_SESSION["paginaEnCurso"]='rest';
         header("Location: indexAplicacionFinal.php");

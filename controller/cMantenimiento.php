@@ -1,5 +1,11 @@
 <?php
 
+    /*
+     * Autor: Alberto Méndez 
+     * Fecha de actualización: 16/02/2026
+     * 
+     */
+
     if(empty($_SESSION['userAMNDWESAplicacionFinal'])){
         $_SESSION['paginaAnterior']=$_SESSION['paginaEnCurso'];
         $_SESSION['paginaEnCurso']='inicioPublico';
