@@ -33,7 +33,7 @@
                 break;
         }
 
-        if ($avInicioPrivado['numConexiones'] <= 1) {
+        if ($avInicioPrivado['numConexiones'] == 1) {
             echo "¡Esta es tu primera conexión!<br>";
         } else {
           $fechaUltimaConexion = $avInicioPrivado['fechaHoraUltimaConexionAnterior'];

@@ -112,7 +112,7 @@
                 $codUsuario,
                 $password,
                 $descUsuario,
-                0,
+                1,
                 new DateTime(),
                 'usuario',
                 null,
