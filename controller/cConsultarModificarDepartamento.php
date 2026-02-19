@@ -1,5 +1,11 @@
 <?php
 
+/*
+ * Autor: Alberto Méndez 
+ * Fecha de actualización: 16/02/2026
+ * 
+ */
+
 
 //comprobamos que el usuario ha pasado por el login
     if(!isset($_SESSION['userAMNDWESAplicacionFinal'])){

@@ -1,4 +1,11 @@
 <?php
+
+    /*
+     * Autor: Alberto Méndez 
+     * Fecha de actualización: 16/02/2026
+     * 
+     */
+
 if(isset($_REQUEST['eliminarNo'])){
     $_SESSION['paginaEnCurso']="editar";
     header("Location: indexAplicacionFinal.php");

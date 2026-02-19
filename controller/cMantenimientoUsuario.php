@@ -1,5 +1,11 @@
 <?php
 
+    /*
+     * Autor: Alberto Méndez 
+     * Fecha de actualización: 16/02/2026
+     * 
+     */
+
     if(!isset($_SESSION['userAMNDWESAplicacionFinal']) || $_SESSION['userAMNDWESAplicacionFinal']->getPerfil() !=='administrador'){
         $_SESSION["paginaEnCurso"]="inicioPrivado";
         header("Location: indexAplicacionFinal.php");
