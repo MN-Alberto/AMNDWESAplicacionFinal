@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>App Final Alberto</title>
-    <link rel="icon" type="image/png" href="./webroot/cuboIcono.png">
+    <title>Aplicación Final Alberto</title>
+    <link rel="icon" type="image/png" href="./webroot/iconoNuevo.png">
     <style>
         
         body {
@@ -32,6 +32,14 @@
         
         #fRegistro{
             margin-top: 40px;
+        }
+        
+        #nuevoPerfilSelect{
+            width: 100px;
+            height: 40px;
+            background: lightcyan;
+            border-radius: 10px;
+            font-weight: bold;   
         }
         
         #imagenIcon{
@@ -219,6 +227,10 @@
             background: lightyellow;
         }
         
+        #pass2{
+            background: lightyellow;
+        }
+        
         #desc{
             background: lightyellow;
         }
@@ -399,6 +411,18 @@
         }
         
         .eliminarBtn{
+            background-color: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .cambiarPasswordUsuario div{
+            margin: 20px;
+        }
+        
+        .cambiarPasswordBtn{
             background-color: transparent;
             border: none;
             font-size: 1.5rem;
