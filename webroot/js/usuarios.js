@@ -46,6 +46,7 @@ function cargarUsuarios(descripcion = "") {
                         <td>
                             <button class="verUserBtn" data-codusuario="${usuario.codigoUsuario}">👁️</button>
                             <button class="eliminarBtn" data-codusuario="${usuario.codigoUsuario}">🗑️</button>
+                            <button class="cambiarPasswordBtn" data-codusuario="${usuario.codigoUsuario}">🔐</button>
                             <button class="cambiarPerfilBtn" data-codusuario="${usuario.codigoUsuario}">🔄</button>
                         </td>
                     `;
@@ -64,6 +65,13 @@ function cargarUsuarios(descripcion = "") {
                     boton.addEventListener("click", function() {
                         const codUsuario = this.dataset.codusuario;
                         eliminarUsuario(codUsuario);
+                    });
+                });
+                
+                document.querySelectorAll(".cambiarPasswordBtn").forEach(boton => {
+                    boton.addEventListener("click", function() {
+                        const codUsuario = this.dataset.codusuario;
+                        cambiarPassword(codUsuario);
                     });
                 });
 
@@ -203,5 +211,64 @@ function cambiarPerfil(codUsuario){
                 }
             })
             .catch(err => console.error("Error al cambiar perfil:", err));
+    });
+}
+
+function cambiarPassword(codUsuario){
+    const nuevaPassword = `
+        <h2>Cambiar Password</h2>
+        <p><strong>Usuario:</strong>${codUsuario}</p>
+            <div class="cambiarPasswordUsuario">
+            <div>
+            <label for="passwordAnterior">Password actual:</label>
+            <input type="password" name="passwordAnterior" id="passwordAnterior" placeholder="Introduce password actual">
+            </div>
+    
+            <div>
+            <label for="nuevaPassword">Nueva password:</label>
+            <input type="password" name="nuevaPassword" id="nuevaPassword" placeholder="Introduce nueva password">
+            </div>
+
+            <div>
+            <label for="nuevaPasswordRepetir">Repetir nueva password:</label>
+            <input type="password" name="nuevaPasswordRepetir" id="nuevaPasswordRepetir" placeholder="Introduce nueva password de nuevo">
+            </div>
+            </div>
+        <br><br>
+
+        <button class="botonesUsuarios" id="confirmarCambiarPassword">Aceptar</button>
+        <button class="botonesUsuarios" id="cancelarCambiarPassword">Cancelar</button>
+    `;
+
+    const cuerpoTabla = document.querySelector(".tablaUsers tbody");
+    cuerpoTabla.innerHTML = `
+        <tr>
+            <td colspan="6">${nuevaPassword}</td>
+        </tr>
+    `;
+
+    document.getElementById("cancelarCambiarPassword").addEventListener("click", () => {
+        const descripcion = document.getElementById("buscarDesc").value.trim();
+        cargarUsuarios(descripcion);
+    });
+
+    document.getElementById("confirmarCambiarPassword").addEventListener("click", () => {
+
+        const passwordAnterior = document.getElementById("passwordAnterior").value;
+        const nuevaPassword = document.getElementById("nuevaPassword").value;
+        const nuevaPasswordRepetir = document.getElementById("nuevaPasswordRepetir").value;
+
+        fetch(`./api/wsCambiarPasswordUsuario.php?codUsuario=${encodeURIComponent(codUsuario)}&passwordAnterior=${encodeURIComponent(passwordAnterior)}&nuevaPassword=${encodeURIComponent(nuevaPassword)}&nuevaPasswordRepetir=${encodeURIComponent(nuevaPasswordRepetir)}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    alert(data.mensaje);
+                    const descripcion = document.getElementById("buscarDesc").value.trim();
+                    cargarUsuarios(descripcion);
+                }
+            })
+            .catch(err => console.error("Error al cambiar password:", err));
     });
 }
